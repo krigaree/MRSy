@@ -1,0 +1,510 @@
+\documentclass[a4paper]{article}
+
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+\ifxetex
+\usepackage{mathspec}
+\else
+\usepackage{fontspec}
+\fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+	\usepackage{microtype}
+	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+	pdftitle={lab1},
+	pdfborder={0 0 0},
+	breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{{#1}}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+	\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{2} %numbering!!!!
+\setcounter{tocdepth}{2}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\usepackage{polski}
+\usepackage[english, polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\usepackage{fancyhdr}% http://ctan.org/pkg/fancyhdr
+
+\fancyhf{}% Clear all headers/footers
+\renewcommand{\headrulewidth}{0pt}% No header rule
+\renewcommand{\footrulewidth}{0pt}% No footer rule
+\fancyfoot[C]{\thepage}%
+
+\fancypagestyle{firstpage}{
+    \fancyfoot[C]{
+    Prowadzący: mgr inż. Marcin Stasiak
+    }
+    }
+
+\title{\normalsize \textsc{
+        \Large{POLITECHNIKA POZNAŃSKA}\\
+		\large{Wydział Elektryczny}\\
+		\normalsize
+		Instytut Matematyki\\
+		Zakład Zastosowań Matematyki
+		}
+    \\[4.0cm]
+    \Large{Praca semestralna}\\
+    [0.5cm]
+    \Huge{Metoda Różnic Skończonych}
+    \normalsize \vspace*{5\baselineskip}
+    }
+\author{Mateusz Talarski\\i\\Piotr Wyrwiński}
+
+\date{}
+\begin{document}
+	\maketitle
+    \thispagestyle{firstpage}
+	\newpage
+	
+	\tableofcontents
+	\newpage
+	
+	
+	\section{Macierze Kroneckera}
+	\subsection{Iloczyn Kroneckera}
+		%\item \textbf{Iloczyn Kroneckera}
+		
+		Jeżeli \textbf{A} jest macierzą o wymiarze $m \times n$, oraz \textbf{B} jest $p \times q$, to \textbf{iloczynem Kroneckera} $\mathbf{A \otimes B}$ nazywamy macierz blokową $mp \times nq$
+		
+	$$\mathbf{A \otimes B} = \begin{bmatrix} a_{11} \mathbf{B} & \cdots & a_{1n}\mathbf{B} \\ \vdots & \ddots & \vdots \\ a_{m1} \mathbf{B} & \cdots & a_{mn} \mathbf{B} \end{bmatrix}$$
+	
+		\textbf{Przykład}
+	$$\begin{bmatrix}1&2\\3&4\\\end{bmatrix}\otimes {\begin{bmatrix}0&5\\6&7\\\end{bmatrix}}={\begin{bmatrix}1\cdot {\begin{bmatrix}0&5\\6&7\\\end{bmatrix}}&2\cdot {\begin{bmatrix}0&5\\6&7\\\end{bmatrix}}\\3\cdot {\begin{bmatrix}0&5\\6&7\\\end{bmatrix}}&4\cdot {\begin{bmatrix}0&5\\6&7\\\end{bmatrix}}\\\end{bmatrix}}={\begin{bmatrix}1\cdot 0&1\cdot 5&2\cdot 0&2\cdot 5\\1\cdot 6&1\cdot 7&2\cdot 6&2\cdot 7\\3\cdot 0&3\cdot 5&4\cdot 0&4\cdot 5\\3\cdot 6&3\cdot 7&4\cdot 6&4\cdot 7\\\end{bmatrix}}={\begin{bmatrix}0&5&0&10\\6&7&12&14\\0&15&0&20\\18&21&24&28\end{bmatrix}}$$
+	
+\subsection{Cel zajęć}
+Na laboratorium przy pomocy iloczyny Kroneckera oraz zadanych macierzy A, B, C, D mieliśmy utworzyć odpowienie macierze. Wyniki przedstawiamy poniżej:
+
+
+
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n=}\FloatTok{6}\NormalTok{;}
+\NormalTok{A=[}\FloatTok{2}\NormalTok{, -}\FloatTok{1}\NormalTok{;-}\FloatTok{1}\NormalTok{,}\FloatTok{2}\NormalTok{];}
+\NormalTok{B=[}\FloatTok{0}\NormalTok{,-}\FloatTok{1}\NormalTok{;}\FloatTok{2}\NormalTok{,}\FloatTok{3}\NormalTok{];}
+\NormalTok{C=[}\FloatTok{1}\NormalTok{,}\FloatTok{1}\NormalTok{;}\FloatTok{1}\NormalTok{,}\FloatTok{2}\NormalTok{];}
+\end{Highlighting}
+\end{Shaded}
+        
+
+\begin{Shaded}
+\begin{Highlighting}[]       
+\CommentTok{%E1}
+\NormalTok{E1 = }\FunctionTok{kron}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n),A);}
+\end{Highlighting}
+\end{Shaded}           
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{%E2}
+\NormalTok{v = [}\FloatTok{1}\NormalTok{;}\FloatTok{2}\NormalTok{*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{));}\FloatTok{1}\NormalTok{];}
+\NormalTok{E2 = }\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v),A);}
+\end{Highlighting}
+\end{Shaded}
+                
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{%E3}
+\NormalTok{v = [}\FloatTok{1}\NormalTok{;-}\FloatTok{1}\NormalTok{*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{));}\FloatTok{1}\NormalTok{];}
+\NormalTok{E3 = }\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v),A) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{1}\NormalTok{)),}\FloatTok{1}\NormalTok{),B) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{1}\NormalTok{)),-}\FloatTok{1}\NormalTok{),B);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{%E4  }
+\NormalTok{v = [}\FloatTok{1}\NormalTok{;}\FloatTok{2}\NormalTok{*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{));}\FloatTok{1}\NormalTok{];}
+\NormalTok{E4 = }\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v),A) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{1}\NormalTok{)),}\FloatTok{1}\NormalTok{),B) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{1}\NormalTok{)),-}\FloatTok{1}\NormalTok{),B');}
+\end{Highlighting}
+\end{Shaded}
+                        
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{%E5}
+\NormalTok{E5=}\FunctionTok{kron}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n),A) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{)),}\FloatTok{2}\NormalTok{),B') +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{)),-}\FloatTok{2}\NormalTok{),B);}
+\end{Highlighting}
+\end{Shaded}
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{%E6  }
+\NormalTok{v = [}\FloatTok{1}\NormalTok{;}\FunctionTok{zeros}\NormalTok{(n-}\FloatTok{2}\NormalTok{,}\FloatTok{1}\NormalTok{);}\FloatTok{1}\NormalTok{];}
+\NormalTok{v1 = [}\FloatTok{0}\NormalTok{;}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{));}\FloatTok{0}\NormalTok{];}
+\NormalTok{E6 = }\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v),C)+ }\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v1),A) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{)),}\FloatTok{2}\NormalTok{),}\FloatTok{3}\NormalTok{*B') +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{)),-}\FloatTok{2}\NormalTok{),}\FloatTok{2}\NormalTok{*B) +\textbackslash{}}
+\NormalTok{flip(}\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v), flip(}\FunctionTok{eye}\NormalTok{(}\FloatTok{2}\NormalTok{))));}
+dsa\\dsa\\dsa\\dsadsa\\dsada\\
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{%E7}
+\NormalTok{v=[}\FloatTok{1}\NormalTok{;}\FunctionTok{zeros}\NormalTok{(n-}\FloatTok{2}\NormalTok{,}\FloatTok{1}\NormalTok{);}\FloatTok{1}\NormalTok{];}
+\NormalTok{v1=[}\FloatTok{0}\NormalTok{;}\FloatTok{1}\NormalTok{;}\FunctionTok{zeros}\NormalTok{(n-}\FloatTok{4}\NormalTok{,}\FloatTok{1}\NormalTok{);}\FloatTok{1}\NormalTok{;}\FloatTok{0}\NormalTok{];}
+\NormalTok{v2=[}\FloatTok{0}\NormalTok{;}\FloatTok{0}\NormalTok{;}\FloatTok{2}\NormalTok{*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{4}\NormalTok{));}\FloatTok{0}\NormalTok{;}\FloatTok{0}\NormalTok{];}
+\NormalTok{E7=}\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v),A) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v1),B) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v2),B) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{)),}\FloatTok{2}\NormalTok{),C) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{)),-}\FloatTok{2}\NormalTok{),C');}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{%E8}
+\NormalTok{v=[}\FloatTok{1}\NormalTok{;}\FunctionTok{zeros}\NormalTok{(n-}\FloatTok{2}\NormalTok{,}\FloatTok{1}\NormalTok{);}\FloatTok{1}\NormalTok{];}
+\NormalTok{v1=[}\FloatTok{0}\NormalTok{;}\FloatTok{2}\NormalTok{;}\FunctionTok{zeros}\NormalTok{(n-}\FloatTok{4}\NormalTok{,}\FloatTok{1}\NormalTok{);}\FloatTok{2}\NormalTok{;}\FloatTok{0}\NormalTok{];}
+\NormalTok{v2=[}\FloatTok{0}\NormalTok{;}\FloatTok{0}\NormalTok{;}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{4}\NormalTok{));}\FloatTok{0}\NormalTok{;}\FloatTok{0}\NormalTok{];}
+
+\NormalTok{E8=}\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v),A) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v1),B) + }\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v2),C) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{)),}\FloatTok{2}\NormalTok{),}\FunctionTok{eye}\NormalTok{(}\FloatTok{2}\NormalTok{)) +\textbackslash{}}
+\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{2}\NormalTok{)),-}\FloatTok{2}\NormalTok{),}\FunctionTok{eye}\NormalTok{(}\FloatTok{2}\NormalTok{))+\textbackslash{}}
+\NormalTok{flip(}\FunctionTok{kron}\NormalTok{(}\FunctionTok{diag}\NormalTok{(v),flip(A)));}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## E1 =
+## 
+##    2  -1   0   0   0   0   0   0   0   0   0   0
+##   -1   2   0   0   0   0   0   0   0   0   0   0
+##    0   0   2  -1   0   0   0   0   0   0   0   0
+##    0   0  -1   2   0   0   0   0   0   0   0   0
+##    0   0   0   0   2  -1   0   0   0   0   0   0
+##    0   0   0   0  -1   2   0   0   0   0   0   0
+##    0   0   0   0   0   0   2  -1   0   0   0   0
+##    0   0   0   0   0   0  -1   2   0   0   0   0
+##    0   0   0   0   0   0   0   0   2  -1   0   0
+##    0   0   0   0   0   0   0   0  -1   2   0   0
+##    0   0   0   0   0   0   0   0   0   0   2  -1
+##    0   0   0   0   0   0   0   0   0   0  -1   2
+## 
+## E2 =
+## 
+##    2  -1   0   0   0   0   0   0   0   0   0   0
+##   -1   2   0   0   0   0   0   0   0   0   0   0
+##    0   0   4  -2   0   0   0   0   0   0   0   0
+##    0   0  -2   4   0   0   0   0   0   0   0   0
+##    0   0   0   0   4  -2   0   0   0   0   0   0
+##    0   0   0   0  -2   4   0   0   0   0   0   0
+##    0   0   0   0   0   0   4  -2   0   0   0   0
+##    0   0   0   0   0   0  -2   4   0   0   0   0
+##    0   0   0   0   0   0   0   0   4  -2   0   0
+##    0   0   0   0   0   0   0   0  -2   4   0   0
+##    0   0   0   0   0   0   0   0   0   0   2  -1
+##    0   0   0   0   0   0   0   0   0   0  -1   2
+## 
+## E3 =
+## 
+##    2  -1   0  -1   0   0   0   0   0   0   0   0
+##   -1   2   2   3   0   0   0   0   0   0   0   0
+##    0  -1  -2   1   0  -1   0   0   0   0   0   0
+##    2   3   1  -2   2   3   0   0   0   0   0   0
+##    0   0   0  -1  -2   1   0  -1   0   0   0   0
+##    0   0   2   3   1  -2   2   3   0   0   0   0
+##    0   0   0   0   0  -1  -2   1   0  -1   0   0
+##    0   0   0   0   2   3   1  -2   2   3   0   0
+##    0   0   0   0   0   0   0  -1  -2   1   0  -1
+##    0   0   0   0   0   0   2   3   1  -2   2   3
+##    0   0   0   0   0   0   0   0   0  -1   2  -1
+##    0   0   0   0   0   0   0   0   2   3  -1   2
+## 
+## E4 =
+## 
+##    2  -1   0  -1   0   0   0   0   0   0   0   0
+##   -1   2   2   3   0   0   0   0   0   0   0   0
+##    0   2   4  -2   0  -1   0   0   0   0   0   0
+##   -1   3  -2   4   2   3   0   0   0   0   0   0
+##    0   0   0   2   4  -2   0  -1   0   0   0   0
+##    0   0  -1   3  -2   4   2   3   0   0   0   0
+##    0   0   0   0   0   2   4  -2   0  -1   0   0
+##    0   0   0   0  -1   3  -2   4   2   3   0   0
+##    0   0   0   0   0   0   0   2   4  -2   0  -1
+##    0   0   0   0   0   0  -1   3  -2   4   2   3
+##    0   0   0   0   0   0   0   0   0   2   2  -1
+##    0   0   0   0   0   0   0   0  -1   3  -1   2
+## 
+## E5 =
+## 
+##    2  -1   0   0   0   2   0   0   0   0   0   0
+##   -1   2   0   0  -1   3   0   0   0   0   0   0
+##    0   0   2  -1   0   0   0   2   0   0   0   0
+##    0   0  -1   2   0   0  -1   3   0   0   0   0
+##    0  -1   0   0   2  -1   0   0   0   2   0   0
+##    2   3   0   0  -1   2   0   0  -1   3   0   0
+##    0   0   0  -1   0   0   2  -1   0   0   0   2
+##    0   0   2   3   0   0  -1   2   0   0  -1   3
+##    0   0   0   0   0  -1   0   0   2  -1   0   0
+##    0   0   0   0   2   3   0   0  -1   2   0   0
+##    0   0   0   0   0   0   0  -1   0   0   2  -1
+##    0   0   0   0   0   0   2   3   0   0  -1   2
+## 
+## E6 =
+## 
+##    1   1   0   0   0   6   0   0   0   0   1   0
+##    1   2   0   0  -3   9   0   0   0   0   0   1
+##    0   0   2  -1   0   0   0   6   0   0   0   0
+##    0   0  -1   2   0   0  -3   9   0   0   0   0
+##    0  -2   0   0   2  -1   0   0   0   6   0   0
+##    4   6   0   0  -1   2   0   0  -3   9   0   0
+##    0   0   0  -2   0   0   2  -1   0   0   0   6
+##    0   0   4   6   0   0  -1   2   0   0  -3   9
+##    0   0   0   0   0  -2   0   0   2  -1   0   0
+##    0   0   0   0   4   6   0   0  -1   2   0   0
+##    1   0   0   0   0   0   0  -2   0   0   1   1
+##    0   1   0   0   0   0   4   6   0   0   1   2
+## 
+## E7 =
+## 
+##    2  -1   0   0   1   1   0   0   0   0   0   0
+##   -1   2   0   0   1   2   0   0   0   0   0   0
+##    0   0   0  -1   0   0   1   1   0   0   0   0
+##    0   0   2   3   0   0   1   2   0   0   0   0
+##    1   1   0   0   0  -2   0   0   1   1   0   0
+##    1   2   0   0   4   6   0   0   1   2   0   0
+##    0   0   1   1   0   0   0  -2   0   0   1   1
+##    0   0   1   2   0   0   4   6   0   0   1   2
+##    0   0   0   0   1   1   0   0   0  -1   0   0
+##    0   0   0   0   1   2   0   0   2   3   0   0
+##    0   0   0   0   0   0   1   1   0   0   2  -1
+##    0   0   0   0   0   0   1   2   0   0  -1   2
+## 
+## E8 =
+## 
+##    2  -1   0   0   1   0   0   0   0   0   2  -1
+##   -1   2   0   0   0   1   0   0   0   0  -1   2
+##    0   0   0  -2   0   0   1   0   0   0   0   0
+##    0   0   4   6   0   0   0   1   0   0   0   0
+##    1   0   0   0   1   1   0   0   1   0   0   0
+##    0   1   0   0   1   2   0   0   0   1   0   0
+##    0   0   1   0   0   0   1   1   0   0   1   0
+##    0   0   0   1   0   0   1   2   0   0   0   1
+##    0   0   0   0   1   0   0   0   0  -2   0   0
+##    0   0   0   0   0   1   0   0   4   6   0   0
+##    2  -1   0   0   0   0   1   0   0   0   2  -1
+##   -1   2   0   0   0   0   0   1   0   0  -1   2
+\end{verbatim}
+
+
+		
+
+	
+	
+	\section{Ejercicios}
+	
+	\begin{enumerate}
+		\item\textbf{1.Para deslizar un armario pesado por el piso a una rapidez constante, tu ejerces una fuerza horizontal de 600 N. ¿La fuerza de fricción entre el armario y el piso es mayor que, menor que o igual a 600 N? Defiende tu respuesta.}
+		
+		R/La fuerza de fricción tiene que ser igual a 600N para que esté en equilibrio y la rapidez del objeto sea constante.
+		
+		\item\textbf{Una jarra vacía con peso W descansa sobre una mesa. ¿Cuál es la fuerza de soporte que la mesa 
+			ejerce sobre la jarra? ¿Cuál es la fuerza de soporte cuando se vierte en la jarra agua que pesa W?}
+		
+		R/Cuando la jarra esta vacía en la mesa se produce la fuerza normal para que este en equilibrio, cuando se vierte agua a la jarra la normal cambiara para igualar el peso y que el objeto quede en equilibrio.
+		\newpage
+		\item\textbf{Un coche recorre cierta carretera con una rapidez promedio de 40 km/h, y regresa por ella con 
+			una rapidez promedio de 60 km/h. Calcula la rapidez promedio en el viaje redondo. (¡No es 50 
+			km/h!)}
+		
+		$$V_{p}=\frac{40Km}{h} + \frac{60Km}{h} = \frac{100Km}{h}$$ 
+		$$t_{1}=\frac{100Km}{40Km/h} = 2.5h\; t_{2}= \frac{100Km}{60Km/h} = 1.667h$$ 
+		$$t_{p}=\frac{2.5h +1.667h}{2}= 2.0835h$$ 
+		$$V_{m}=\frac{100Km}{2.0835h}= 47.9\frac{Km}{h} = 48\frac{Km}{h}$$ 
+		La rapidex promedio es de $48\frac{Km}{h}$
+		
+		\item\textbf{Un automóvil tarda 10 s en pasar de v = 0 a v = 25 m/s con una aceleración aproximadamente 
+			constante. Si deseas calcular la distancia recorrida con la ecuación \textbf{$d=\frac{1}{2}at^2$}, ¿qué valor usarías 
+			en a?} 
+		
+		$$d=\frac{1}{2}at^2$$
+		$$d=\frac{1}{2}(5m/s^2)(10s)^2$$
+		$$d=(0.5)(5m/s^2)(100s^2)$$
+		$$d=250m$$
+		$$v=\frac{m}{s}$$
+		$$v=\frac{250m}{10s}$$
+		$$v=25\frac{m}{s}$$
+		utilizaria 5 ya que con el 5 la distancia me daria 250m, y al utilizar esa distancia para sacar la rapidez el resultado nos daria $25\frac{m}{s}$
+		
+		\item\textbf{ Al acelerar cerca del final de una carrera, un corredor de 60 kg de masa pasa de una rapidez de 6 
+			m/s a otra de 7 m/s en 2 s. 
+			a. ¿Cuál es la aceleración promedio del corredor durante este tiempo? 
+			b. Para aumentar su rapidez, el corredor produce una fuerza sobre el suelo dirigida hacia 
+			atrás, y en consecuencia el suelo lo impulsa hacia adelante y proporciona la fuerza 
+			necesaria para la aceleración. Calcula esta fuerza promedio.}
+		
+		R/ a) $$a_{p}=\frac{v_{f}-v_{i}}{t_{f}-t_{i}}$$
+		$$a_{p}=\frac{7m/s-6m/s}{2s}$$
+		$$a_{p}=\frac{1m/s}{2s}$$
+		$$a_{p}=0.5m/s^2$$
+		
+		b) $$F=ma$$
+		$$F=(60kg)(0.5m/s^2)$$
+		$$F=30N$$
+		
+		\item\textbf{Se ve que dos cajas aceleran igual cuando se aplica una fuerza F a la primera, y se aplica 4F a la 
+			segunda. ¿Cuál es la relación de sus masas?} 
+		
+		R/La masa de la primera caja es menor a la de la segunda caja que es 4 veces mayor por lo tanto se aplica mas fuerza en esta, pero siguen teniendo la misma aceleracíon.
+		
+		\item\textbf{Vas remando en una canoa, a 4 km/h tratando de cruzar directamente un río que corre a 3 km/h, 
+			como se ve en la figura. a) ¿Cuál es la rapidez resultante de la canoa relativa a la orilla? b) ¿En 
+			aproximadamente qué dirección debería remarse la canoa para que llegue a la otra orilla y su 
+			trayectoria sea perpendicular al río?} 
+		
+		\begin{figure}[!ht]  
+			
+			
+		\end{figure}
+		
+		R/ $$R=\sqrt{x^2+y^2}$$
+		$$R=\sqrt{(4)^2+(3)^2}$$
+		$$R=\sqrt{16+9}$$
+		$$R=\sqrt{25}$$
+		$$R=5\frac{Km}{h}$$
+		Va a $5\frac{Km}{h}$ al sureste.
+		
+		\newpage
+		
+		\item\textbf{Un avión cuya rapidez normal es 100 km/h, pasa por un viento cruzado del oeste hacia el este de 
+			100 km/h. Calcula su velocidad con respecto al suelo, cuando su proa apunta al norte, dentro del 
+			viento cruzado.}
+		
+		R/ $$R=\sqrt{x^2+y^2}$$
+		$$R=\sqrt{(100)^2+(100)^2}$$
+		$$R=\sqrt{10000+10000}$$
+		$$R=\sqrt{20000}$$
+		$$R=141.42\frac{Km}{h}$$
+		El avion va a una velocidad de $141.42\frac{Km}{h}$ hacia el noreste.
+		
+		\item\textbf{Superman llega a un asteroide en el espacio exterior y lo lanza a 800 m/s, tan rápido como una 
+			bala. El asteroide es 1,000 veces más masivo que Superman. En los dibujos animados, se ve que 
+			Superman queda inmóvil después del lanzamiento. Si entra la física en este caso, ¿cuál sería su 
+			velocidad de retroceso?}
+		
+		R/ 
+		
+		
+		\item\textbf{. Una locomotora diesel pesa cuatro veces más que un furgón de carga. Si la locomotora rueda a 5 
+			km/h y choca contra un furgón que inicialmente está en reposo, ¿con qué rapidez siguen rodando 
+			los dos después de acoplarse?}
+		
+		R/$$(mv_{neto})_{antes}=(mv_{neto})_{despues}$$
+		$$(4m.5Km/h)+(m.0)=(4m+m)v$$
+		$$\frac{20kg.Km/h}{5m}=v$$
+		$$v=4\frac{Km}{h}$$
+		
+		\item\textbf{La energía que obtenemos del metabolismo puede efectuar trabajo y generar calor. 
+			a. ¿Cuál es la eficiencia mecánica de una persona relativamente inactiva que gasta 100 W 
+			de potencia para producir aproximadamente 1 W de potencia en forma de trabajo, 
+			mientras genera más o menos 99 W de calor? 
+			b. ¿Cuál es la eficiencia mecánica de un ciclista que, en una ráfaga de esfuerzo produce 100 
+			W de potencia mecánica con 1,000 W de potencia metabólica?}
+		
+		R/ 
+		
+		
+		
+		R/ La energía cinética es la mitad después del choque por su rapides que es menor, y la energía se convierte en calor por la fricción producida.
+		
+		
+		
+	\end{enumerate}
+	
+	
+\end{document}
