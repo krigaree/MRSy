@@ -94,5 +94,78 @@ Zestawienie błędów przybliżeń dla II rzędu schematu Dc na wykresie log-log
 
 \includegraphics{Lab2/charts/rz2_e.png}
 
+\vspace{1cm}
+Ponadto wyznaczyliśmy współczynniki dla:
+
+$$1)\hspace{1mm}Df(x_{0}) \leftarrow f(x_{0}), f(x_{0}-h), f(x_{x0}-3h)$$
+$$2)\hspace{1mm}Df(x_{0}) \leftarrow f(x_{0}-h), f(x_{0}), f(x_{0}+2h), f(x_{0}+3h)$$
+$$3)\hspace{1mm}D^2f(x_{0}) \leftarrow f(x_{0}-2h), f(x_{0}-h), f(x_{0}), f(x_{0}+h)$$
+
+Aby rozwiązać ten problem użyliśmy rozwinięcie w szereg Taylora.
+
+Przykładowe rozwiązanie prezentujemy dla pierwszego przykładu, kolejne zostały rozwiązane analogicznie.
+
+\vspace{1cm}
+
+
+$Df(x_{0}) = a \cdot f(x_{0}) + b \cdot f(x_{0}-h) + c \cdot f(x_{0}-3h) $
+
+$f(x_{0}-h) = f(x_{0}) - \frac{f'(x_{0})}{1!}h + \frac{f''(x_{0})}{2!}h^2 + O(h^3)$
+
+$f(x_{0}-3h) = f(x_{0}) - \frac{f'(x_{0})}{1!}3h + \frac{f''(x_{0})}{2!}9h^2 + O(h^3)$
+
+$Df(x_{0}) = f(x_{0}) \cdot (a+b+c) + f'(x_{0}) \cdot (-bh-3ch) + f''(x_{0}) \cdot (\dfrac{bh^2}{2} + \dfrac{9ch^2}{2}) $
+
+Teraz rozwiązujemy poniższy układ równań w celu wyznaczenia współczynników a, b oraz c.
+
+$$\left\{\begin{array}{rcl}
+a+b+c&=&0\\
+-bh-3ch&=&1\\
+\dfrac{bh^2}{2} + \dfrac{9ch^2}{2}&=&0
+\end{array} \right.$$
+
+Otrzymujemy:
+
+Rozwiązanie zadania 1.
+
+$$\left\{\begin{array}{rcl}
+\vspace{0.2cm}
+a&=&-\dfrac{4}{3h}\\
+\vspace{0.2cm}
+b&=&-\dfrac{3}{2h}\\
+c&=&\dfrac{1}{6h}
+\end{array} \right.$$
+
+
+Rozwiązanie zadania 2.
+$$\left\{\begin{array}{rcl}
+\vspace{0.2cm}
+a&=&\dfrac{1}{6h}\\
+\vspace{0.2cm}
+b&=&-\dfrac{1}{2h}\\
+\vspace{0.2cm}
+c&=&\dfrac{1}{2h} \\
+d&=&-\dfrac{1}{6h}
+\end{array} \right.$$
+
+Rozwiązanie zadania 3.
+$$\left\{\begin{array}{rcl}
+\vspace{0.2cm}
+a&=&-\dfrac{1}{h^2}\\
+\vspace{0.2cm}
+b&=&\dfrac{1}{3h^2}\\
+\vspace{0.2cm}
+c&=&-\dfrac{1}{h^2} \\
+d&=&\dfrac{5}{3h^2}
+\end{array} \right.$$
+
+
+
+
+
+
+
+
+
 
 
