@@ -1,0 +1,41 @@
+\documentclass[a4paper]{article}
+
+\include{pack}
+
+\fancypagestyle{firstpage}{
+    \fancyfoot[C]{
+    Prowadzący: mgr inż. Marcin Stasiak
+    }
+    }
+
+\title{\normalsize \textsc{
+        \Large{POLITECHNIKA POZNAŃSKA}\\
+		\large{Wydział Elektryczny}\\
+		\normalsize
+		Instytut Matematyki\\
+		Zakład Zastosowań Matematyki
+		}
+    \\[4.0cm]
+    \Large{Praca semestralna}\\
+    [0.5cm]
+    \Huge{Metoda Różnic Skończonych}
+    \normalsize \vspace*{5\baselineskip}
+    }
+\author{Mateusz Talarski\\i\\Piotr Wyrwiński}
+
+\date{}
+\begin{document}
+	\maketitle
+    \thispagestyle{firstpage}
+	\newpage
+	
+	\tableofcontents
+	\newpage
+	
+    \include{Lab1/kronecker}	
+
+    \include{Lab1/fourier}
+    
+    \include{Lab2/schemes}
+	
+\end{document}
