@@ -1,0 +1,30 @@
+\begin{Shaded}
+    \begin{Highlighting}[]
+        \FunctionTok{clear}\NormalTok{, }\FunctionTok{clc}\NormalTok{;}
+        \CommentTok{#dane wejściowe}
+        \NormalTok{a=}\FloatTok{0}\NormalTok{;}
+        \NormalTok{b=}\FloatTok{2}\NormalTok{*}\BaseNTok{pi}\NormalTok{;}
+        \NormalTok{n = input('Podaj liczbe węzłów: ');}
+        \NormalTok{h = (b-a)/(n-}\FloatTok{1}\NormalTok{);}
+        \NormalTok{Ua = }\FloatTok{0}\NormalTok{;}
+        \NormalTok{Ub = }\FloatTok{0}\NormalTok{;}
+        \NormalTok{f = @(x) -}\FunctionTok{sin}\NormalTok{(x) - }\FloatTok{4}\NormalTok{*}\FunctionTok{sin}\NormalTok{(}\FloatTok{2}\NormalTok{*x);}
+        \NormalTok{g = @(x) }\FunctionTok{sin}\NormalTok{(x) + }\FunctionTok{sin}\NormalTok{(}\FloatTok{2}\NormalTok{*x);}
+        \CommentTok{#obliczenia}
+        \NormalTok{v1 = -}\FloatTok{2}\NormalTok{*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n));}
+        \NormalTok{v2 = }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{1}\NormalTok{));}
+        \NormalTok{A = }\FunctionTok{diag}\NormalTok{(v1) + }\FunctionTok{diag}\NormalTok{(v2,}\FloatTok{1}\NormalTok{) + }\FunctionTok{diag}\NormalTok{(v2,-}\FloatTok{1}\NormalTok{);}
+        \NormalTok{x= }\FunctionTok{linspace}\NormalTok{(a+h,b-h,n);}
+        \NormalTok{x2 = }\FunctionTok{linspace}\NormalTok{(a,b,n+}\FloatTok{2}\NormalTok{);}
+        \NormalTok{F = f(x)*h^}\FloatTok{2}\NormalTok{;}
+        \NormalTok{F(}\FloatTok{1}\NormalTok{) = F(}\FloatTok{1}\NormalTok{) - Ua;}
+        \NormalTok{F(n) = F(n) - Ub;}
+        \NormalTok{U = linsolve(A,F');}
+        \NormalTok{U = [Ua U' Ub];}
+        \CommentTok{#wykres}
+        \NormalTok{hold on}
+        \NormalTok{plot(x2,U', 'r')}
+        \NormalTok{plot(x2,g(x2),'b')}
+        \NormalTok{hold off}
+    \end{Highlighting}
+\end{Shaded}
