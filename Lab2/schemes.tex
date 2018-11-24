@@ -30,14 +30,15 @@ Dla wybranej funkcji $f$ mieliśmy użyć schematów różnicowych w celu aproks
 
 Wybraliśmy funkcję $sinus$ w punkcie $x_{0} = 0.3$.
 
-Następnie analitycznie obliczyliśmy pierwszą oraz drugą pochodną w obranym punkcie. Otrzymaliśmy:
+Analitycznie obliczyliśmy pierwszą oraz drugą pochodną w obranym punkcie. Otrzymaliśmy:
 
 $$sin'(0.3)=0.9553$$
 $$sin''(0.3)=-0,2955$$
 
 Następnie przystąpiliśmy do obliczeń numerycznych przy wykorzystaniu zaprezentowanych schematów różnicowych.
 \newpage
-
+\subsection{Wykresy}
+\vspace{0.3cm}
 \includegraphics{Lab2/charts/rz1_log_Db_dane.png}
 
 \includegraphics{Lab2/charts/rz1_log_Db.png} 
@@ -94,19 +95,21 @@ Zestawienie błędów przybliżeń dla II rzędu schematu Dc na wykresie log-log
 
 \includegraphics{Lab2/charts/rz2_e.png}
 
-\vspace{1cm}
+\subsection{Zadanie dodatkowe - Współczynniki}
 Ponadto wyznaczyliśmy współczynniki dla:
 
-$$1)\hspace{1mm}Df(x_{0}) \leftarrow f(x_{0}), f(x_{0}-h), f(x_{0}-3h)$$
-$$2)\hspace{1mm}Df(x_{0}) \leftarrow f(x_{0}-h), f(x_{0}), f(x_{0}+2h), f(x_{0}+3h)$$
-$$3)\hspace{1mm}D^2f(x_{0}) \leftarrow f(x_{0}-2h), f(x_{0}-h), f(x_{0}), f(x_{0}+h)$$
+$1)\hspace{1mm}Df(x_{0}) \leftarrow f(x_{0}), f(x_{0}-h), f(x_{0}-3h) $
+
+$2)\hspace{1mm}Df(x_{0}) \leftarrow f(x_{0}-h), f(x_{0}), f(x_{0}+2h), f(x_{0}+3h) $
+
+$3)\hspace{1mm}D^2f(x_{0}) \leftarrow f(x_{0}-2h), f(x_{0}-h), f(x_{0}), f(x_{0}+h) $
+\vspace{0.3cm}
 
 Aby rozwiązać ten problem użyliśmy rozwinięcie w szereg Taylora.
 
 Przykładowe rozwiązanie prezentujemy dla pierwszego przykładu, kolejne zostały rozwiązane analogicznie.
 
 \vspace{0,5cm}
-
 
 $Df(x_{0}) = a \cdot f(x_{0}) + b \cdot f(x_{0}-h) + c \cdot f(x_{0}-3h) $
 
@@ -118,46 +121,59 @@ $Df(x_{0}) = f(x_{0}) \cdot (a+b+c) + f'(x_{0}) \cdot (-bh-3ch) + f''(x_{0}) \cd
 
 Teraz rozwiązujemy poniższy układ równań w celu wyznaczenia współczynników a, b oraz c.
 
-$$\left\{\begin{array}{rcl}
-a+b+c&=&0\\
--bh-3ch&=&1\\
-\dfrac{bh^2}{2} + \dfrac{9ch^2}{2}&=&0
-\end{array} \right.$$
+\[
+\begin{cases}
+\vspace{0.1cm} 
+\hspace{0,1cm}a+b+c=0 \\
+\vspace{0.1cm}
+\hspace{0,1cm}-bh-3ch=1 \\
+\hspace{0,1cm}\dfrac{bh^2}{2} + \dfrac{9ch^2}{2}=0
+\end{cases}
+\]
 
 Otrzymujemy:
 
 Rozwiązanie zadania 1.
 
-$$\left\{\begin{array}{rcl}
+\[
+\begin{cases}
+\vspace{0.2cm} 
+\hspace{0,1cm}a=\dfrac{4}{3h} \\
 \vspace{0.2cm}
-a&=&\dfrac{4}{3h}\\
-\vspace{0.2cm}
-b&=&-\dfrac{3}{2h}\\
-c&=&\dfrac{1}{6h}
-\end{array} \right.$$
-
+\hspace{0,1cm}b=-\dfrac{3}{2h} \\
+\hspace{0,1cm}c=\dfrac{1}{6h}
+\end{cases}
+\]
 
 Rozwiązanie zadania 2.
-$$\left\{\begin{array}{rcl}
+
+\[
+\begin{cases}
+\vspace{0.2cm} 
+\hspace{0,1cm}a=\dfrac{1}{6h} \\
 \vspace{0.2cm}
-a&=&\dfrac{1}{6h}\\
+\hspace{0,1cm}b=-\dfrac{1}{2h} \\
 \vspace{0.2cm}
-b&=&-\dfrac{1}{2h}\\
+\hspace{0,1cm}c=\dfrac{1}{2h} \\
 \vspace{0.2cm}
-c&=&\dfrac{1}{2h} \\
-d&=&-\dfrac{1}{6h}
-\end{array} \right.$$
+\hspace{0,1cm}d=-\dfrac{1}{6h}
+\end{cases}
+\]
 
 Rozwiązanie zadania 3.
-$$\left\{\begin{array}{rcl}
+
+\[
+\begin{cases}
+\vspace{0.2cm} 
+\hspace{0,1cm}a=-\dfrac{2}{h^2} \\
 \vspace{0.2cm}
-a&=&-\dfrac{2}{h^2}\\
+\hspace{0,1cm}b=0 \\
 \vspace{0.2cm}
-b&=&0\\
+\hspace{0,1cm}c=\dfrac{1}{h^2} \\
 \vspace{0.2cm}
-c&=&\dfrac{1}{h^2} \\
-d&=&\dfrac{1}{h^2}
-\end{array} \right.$$
+\hspace{0,1cm}d=\dfrac{1}{h^2}
+\end{cases}
+\]
 
 Następnie przystąpiliśmy do obliczeń numerycznych wykorzystując trzy powyższe schematy.
 

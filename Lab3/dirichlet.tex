@@ -1,0 +1,90 @@
+\section{Zagadnienie brzegowe Dirichleta}
+\subsection{Definicja}
+
+Warunek brzegowy Dirichleta stosujemy w teorii równań różniczkowych zwyczajnych oraz cząstkowych (typu eliptycznego) II rzędu.
+
+Polega ona na zalożeniu, że znane są wartości poszukiwanego rozwiązania na obu brzegach przedziału $<a,b>$, na którym określona jest funkcja będąca rozwiązaniem danego problemu.
+
+Jeżeli dla równania różniczkowego (zwyczajnego lub cząstkowego) stawiamy warunek brzegowy Dirichleta (na całym brzegu), to mówimy o zagadnieniu (problemie) Dirichleta. 
+
+\textbf{Warunek brzegowy Dirichleta (I rodzaju)}
+
+\[
+\begin{cases}
+\vspace{0.1cm} 
+\hspace{0,1cm}\alpha \cdot y'' + \beta \cdot y'+\gamma \cdot y=f \\
+\vspace{0.1cm}
+\hspace{0,1cm}y(a)=y_{a} \\
+\hspace{0,1cm}y(b)=y_{b}
+\end{cases}
+\]
+, gdzie:
+
+$\alpha, \beta, \gamma, f$ są znanymi funkcjami
+\newline
+$y = y(x)$ jest poszukiwanym rozwiązaniem
+\newline
+
+\textbf{Zagadnienie Dirichleta}
+
+Poszukujemy funckję $u$, której znane są wartości na brzegu. Taki problem da się rozwiązać analitycznie całkując dwukrotnie równanie.
+
+\[
+\begin{cases}
+\vspace{0.1cm} 
+\hspace{0,1cm}u''=f \\
+\vspace{0.1cm}
+\hspace{0,1cm}u|_{x=a}=u_{a} \\
+\hspace{0,1cm}u|_{x=b}=u_{b}
+\end{cases}
+\]
+\newline
+
+My jednak sformułujemy to zagadnienie z użyciem MRS, otrzymamy wówczas aproksymację rozwiązania w wybranych przez nas węzłach.
+
+Następnie porównamy metodę numeryczną oraz analityczną rozwiązania zadanego problemu.
+
+\subsection{Cel ćwiczenia}
+
+Naszym zadaniem było stworzenie algorytmu rozwiązującego następujące zagadnienia Dirichleta:
+
+a)
+\[
+\begin{cases}
+\vspace{0.1cm} 
+\hspace{0,1cm}u''=-sin(x)-4\cdot sin(2x) \\
+\vspace{0.1cm}
+\hspace{0,1cm}u|_{x=0}=0 \\
+\hspace{0,1cm}u|_{x=2\pi}=0
+\end{cases}
+\]
+, gdzie:
+
+$x\in [0,2\pi]$
+
+Rozwiązanie analityczne: $\overline{\rm u}(x) = sin(x) +sin(2x)$
+\newpage
+b)
+\[
+\begin{cases}
+\vspace{0.1cm} 
+\hspace{0,1cm}u''=12x \\
+\vspace{0.1cm}
+\hspace{0,1cm}u|_{x=0}=0 \\
+\hspace{0,1cm}u|_{x=1}=1
+\end{cases}
+\]
+, gdzie:
+
+$x\in [0,1]$
+
+Rozwiązanie analityczne: $\overline{\rm u}(x) = 2x^{3}-x$
+
+\vspace{0.3cm}
+Ponadto zaprezentujemy wykres porównujący rozwiązanie numeryczne z rozwiązaniem analitycznym, a także wykres błędu $||E||_{\infty}$ w zależności od liczby obranych węzłów (n).
+
+\subsection{Algorytm}
+
+\subsection{Wykres}
+ 
+
