@@ -3,10 +3,7 @@
 Niech funkcja \textbf{f} będzie określona na odcinku $\mathbf{\left[-\frac{T}{2}, \frac{T}{2}\right]}$ poza skończoną liczbą punktów oraz będzie również określona poza przedziałem $\mathbf{\left[-\frac{T}{2}, \frac{T}{2}\right]}${\tiny } poprzez równość $\mathbf{f(x) = f(x + T)}$
 \\ \\
 \textbf{Trygonometrycznym szeregiem Fouriera} funkcji f nazywamy szereg funkcyjny następującej postaci:
-
 $$S(x) = \frac{a_{0}}{2} + \sum_{n=1}^{\infty} \left(a_{n} cos\left(\frac{2n\pi}{T} x\right) + b_{n} sin\left(\frac{2n\pi}{T} x\right) \right)$$
-
-
 O współczynnikach określonych następującymi wzorami:
 $$ a_{n} = \frac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(x)cos\left(\frac{2n\pi}{T} x \right) dx,	\quad n = 0,1,2,...$$
 
@@ -24,9 +21,9 @@ Zadane funkcje na określonych przedziałach rozwinęliśmy w szereg Fouriera or
     \item $f(x) = sin(x), \quad x\in [-\pi,\pi]$
 \end{itemize}
 
-\vspace*{1\baselineskip}
+\subsection{Algorytm}
+\vspace*{0.1cm}
 Poniżej został zaprezentowany kod programu w języku Python:\\
-
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -48,7 +45,6 @@ Poniżej został zaprezentowany kod programu w języku Python:\\
     \NormalTok{ax }\OperatorTok{=} \NormalTok{fig.add_subplot(}\DecValTok{111}\NormalTok{)}
     \NormalTok{ax.plot(x, S, x, fx(x), }\StringTok{'r--'}\NormalTok{)}
     \NormalTok{plt.show()}
-    
 \NormalTok{rng = int(input('Wpisz range: '))}
 \NormalTok{A }\OperatorTok{=} \NormalTok{[}\OperatorTok{-}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\OperatorTok{-}\NormalTok{np.pi]}
 \NormalTok{B }\OperatorTok{=} \NormalTok{[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, np.pi]}
@@ -75,11 +71,11 @@ Poniżej został zaprezentowany kod programu w języku Python:\\
         \NormalTok{n }\OperatorTok{=} \NormalTok{i}
         \NormalTok{S }\OperatorTok{+=} \NormalTok{f(x)}
     \NormalTok{S }\OperatorTok{+=} \NormalTok{a0}\OperatorTok{/}\DecValTok{2}
-    
     \NormalTok{plotSeries(x,S, fx[}\DecValTok{0}\NormalTok{][inx])}
 \end{Highlighting}
 \end{Shaded}
-
+\subsection{Wykresy}
 \includegraphics{Lab1/charts/Figure_1.png}
+
 \includegraphics{Lab1/charts/Figure_2.png}
 \includegraphics{Lab1/charts/Figure_3.png}
