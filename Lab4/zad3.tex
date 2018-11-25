@@ -1,0 +1,37 @@
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{clear}\NormalTok{, }\FunctionTok{clc}\NormalTok{;}
+\CommentTok{# Dane wejściowe}
+\NormalTok{f = @(x) -}\FloatTok{4}\NormalTok{*x.^}\FloatTok{2}\NormalTok{;}
+\NormalTok{g = @(x) x.^}\FloatTok{2} \NormalTok{- x;}
+\NormalTok{a = }\FloatTok{0}\NormalTok{;}
+\NormalTok{b = }\FloatTok{1}\NormalTok{;}
+\NormalTok{ax = @(x) -x.^}\FloatTok{2}\NormalTok{;}
+\NormalTok{bx = @(x) -}\FloatTok{2}\NormalTok{*x;}
+\NormalTok{cx = @(x) }\FloatTok{2}\NormalTok{;}
+\NormalTok{ua = }\FloatTok{0}\NormalTok{;}
+\NormalTok{ub = }\FloatTok{0}\NormalTok{;}
+\NormalTok{c = b-a;}
+\NormalTok{n = }\FloatTok{10}\NormalTok{;}
+\NormalTok{h = c/(n+}\FloatTok{1}\NormalTok{);}
+\NormalTok{x = }\FunctionTok{linspace}\NormalTok{((a+h),(b-h),n);}
+\CommentTok{# Obliczenia}
+\NormalTok{a1 = (-}\FloatTok{2} \NormalTok{.* ax(x) + cx(x) .*h^}\FloatTok{2}\NormalTok{)' .* }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n));}
+\NormalTok{A1 = }\FunctionTok{diag}\NormalTok{(a1);}
+\NormalTok{a2 = (ax(x(}\FloatTok{2}\NormalTok{:n)) -}\FloatTok{1}\NormalTok{/}\FloatTok{2} \NormalTok{.* bx(x(}\FloatTok{2}\NormalTok{:n)) .*h)' .* }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{1}\NormalTok{));}
+\NormalTok{A2 = }\FunctionTok{diag}\NormalTok{(a2, -}\FloatTok{1}\NormalTok{);}
+\NormalTok{a3 = (ax(x(}\FloatTok{1}\NormalTok{:n-}\FloatTok{1}\NormalTok{)) +}\FloatTok{1}\NormalTok{/}\FloatTok{2} \NormalTok{.* bx(x(}\FloatTok{1}\NormalTok{:n-}\FloatTok{1}\NormalTok{)) .*h)' .* }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{1}\NormalTok{));}
+\NormalTok{A3 = }\FunctionTok{diag}\NormalTok{(a3, }\FloatTok{1}\NormalTok{);}
+\NormalTok{A = A1  + A2 + A3;}
+\NormalTok{F = (h^}\FloatTok{2} \NormalTok{* f(x));}
+\NormalTok{F(}\FloatTok{1}\NormalTok{) = F(}\FloatTok{1}\NormalTok{) - ua * (ax(}\FloatTok{1}\NormalTok{) - }\FloatTok{1}\NormalTok{/}\FloatTok{2} \NormalTok{* bx(}\FloatTok{1}\NormalTok{)*h);}
+\NormalTok{F(n) = F(n) - ub * (ax(n) + }\FloatTok{1}\NormalTok{/}\FloatTok{2} \NormalTok{* bx(n)*h);}
+\NormalTok{U = linsolve(A,F');}
+\NormalTok{U = [ua U' ub];}
+\NormalTok{X = [a x b];}
+\CommentTok{# Wykres}
+\FunctionTok{plot}\NormalTok{(X, U, X, g(X), }\StringTok{'ro'}\NormalTok{);}
+\CommentTok{# Błąd}
+\NormalTok{E = }\FunctionTok{max}\NormalTok{(}\FunctionTok{abs}\NormalTok{(g(X) - U));}
+\end{Highlighting}
+\end{Shaded}
