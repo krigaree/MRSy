@@ -3,7 +3,7 @@
 
 Warunek brzegowy Dirichleta stosujemy w teorii równań różniczkowych zwyczajnych oraz cząstkowych (typu eliptycznego) II rzędu.
 
-Polega ona na zalożeniu, że znane są wartości poszukiwanego rozwiązania na obu brzegach przedziału $<a,b>$, na którym określona jest funkcja będąca rozwiązaniem danego problemu.
+Polega ona na zalożeniu, że znane są wartości poszukiwanego rozwiązania na obu brzegach przedziału $[a,b]$, na którym określona jest funkcja będąca rozwiązaniem danego problemu.
 
 Jeżeli dla równania różniczkowego (zwyczajnego lub cząstkowego) stawiamy warunek brzegowy Dirichleta (na całym brzegu), to mówimy o zagadnieniu (problemie) Dirichleta. 
 
@@ -62,7 +62,7 @@ a)
 
 $x\in [0,2\pi]$
 
-Rozwiązanie analityczne: $\overline{\rm u}(x) = sin(x) +sin(2x)$
+Rozwiązanie analityczne: $\widetilde{u}(x) = sin(x) +sin(2x)$
 \newpage
 b)
 \[
@@ -78,13 +78,171 @@ b)
 
 $x\in [0,1]$
 
-Rozwiązanie analityczne: $\overline{\rm u}(x) = 2x^{3}-x$
+Rozwiązanie analityczne: $\widetilde{u}(x) = 2x^{3}-x$
 
 \vspace{0.3cm}
 Ponadto zaprezentujemy wykres porównujący rozwiązanie numeryczne z rozwiązaniem analitycznym, a także wykres błędu $||E||_{\infty}$ w zależności od liczby obranych węzłów (n).
 
 \subsection{Algorytm}
+a)
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{clear}\NormalTok{, }\FunctionTok{clc}\NormalTok{;}
+\CommentTok{#dane wejściowe}
+\NormalTok{a=}\FloatTok{0}\NormalTok{;}
+\NormalTok{b=}\FloatTok{2}\NormalTok{*}\BaseNTok{pi}\NormalTok{;}
+\NormalTok{n = input('Podaj liczbe węzłów: ');}
+\NormalTok{h = (b-a)/(n-}\FloatTok{1}\NormalTok{);}
+\NormalTok{Ua = }\FloatTok{0}\NormalTok{;}
+\NormalTok{Ub = }\FloatTok{0}\NormalTok{;}
+\NormalTok{f = @(x) -}\FunctionTok{sin}\NormalTok{(x) - }\FloatTok{4}\NormalTok{*}\FunctionTok{sin}\NormalTok{(}\FloatTok{2}\NormalTok{*x);}
+\NormalTok{g = @(x) }\FunctionTok{sin}\NormalTok{(x) + }\FunctionTok{sin}\NormalTok{(}\FloatTok{2}\NormalTok{*x);}
+\CommentTok{#obliczenia}
+\NormalTok{v1 = -}\FloatTok{2}\NormalTok{*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n));}
+\NormalTok{v2 = }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{1}\NormalTok{));}
+\NormalTok{A = }\FunctionTok{diag}\NormalTok{(v1) + }\FunctionTok{diag}\NormalTok{(v2,}\FloatTok{1}\NormalTok{) + }\FunctionTok{diag}\NormalTok{(v2,-}\FloatTok{1}\NormalTok{);}
+\NormalTok{x= }\FunctionTok{linspace}\NormalTok{(a+h,b-h,n);}
+\NormalTok{x2 = }\FunctionTok{linspace}\NormalTok{(a,b,n+}\FloatTok{2}\NormalTok{);}
+\NormalTok{F = f(x)*h^}\FloatTok{2}\NormalTok{;}
+\NormalTok{F(}\FloatTok{1}\NormalTok{) = F(}\FloatTok{1}\NormalTok{) - Ua;}
+\NormalTok{F(n) = F(n) - Ub;}
+\NormalTok{U = linsolve(A,F');}
+\NormalTok{U = [Ua U' Ub];}
+\CommentTok{#wykres}
+\NormalTok{plot(x2, U, x2, g(x2), 'ro');}
+\NormalTok{legend('Metoda Analityczna','Metoda Numeryczna');}
+\CommentTok{#error}
+\NormalTok{E = max(abs(g(x2) - U));}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+\newpage
+b)
+\begin{samepage}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{clear}\NormalTok{, }\FunctionTok{clc}\NormalTok{;}
+\CommentTok{#dane wejściowe}
+\NormalTok{a=}\FloatTok{0}\NormalTok{;}
+\NormalTok{b=}\FloatTok{1}\NormalTok{;}
+\CommentTok{#n=input('Podaj liczbę węzłów: ');}
+\NormalTok{n = }\FloatTok{10}\NormalTok{;}
+\NormalTok{h = (b-a)/(n-}\FloatTok{1}\NormalTok{);}
+\NormalTok{Ua = }\FloatTok{0}\NormalTok{;}
+\NormalTok{Ub = }\FloatTok{1}\NormalTok{;}
+\NormalTok{f = @(x) }\FloatTok{12}\NormalTok{*x;}
+\NormalTok{g = @(x) }\FloatTok{2}\NormalTok{*x.^}\FloatTok{3}\NormalTok{-x;}
+\CommentTok{#obliczenia}
+\NormalTok{v1 = -}\FloatTok{2}\NormalTok{*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n));}
+\NormalTok{v2 = }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{1}\NormalTok{));}
+\NormalTok{A = }\FunctionTok{diag}\NormalTok{(v1) + }\FunctionTok{diag}\NormalTok{(v2,}\FloatTok{1}\NormalTok{) + }\FunctionTok{diag}\NormalTok{(v2,-}\FloatTok{1}\NormalTok{);}
+\NormalTok{x= }\FunctionTok{linspace}\NormalTok{(a+h,b-h,n);}
+\NormalTok{x2 = }\FunctionTok{linspace}\NormalTok{(a,b,n+}\FloatTok{2}\NormalTok{);}
+\NormalTok{F = f(x)*h^}\FloatTok{2}\NormalTok{;}
+\NormalTok{F(}\FloatTok{1}\NormalTok{) = F(}\FloatTok{1}\NormalTok{) - Ua;}
+\NormalTok{F(n) = F(n) - Ub;}
+\NormalTok{U = linsolve(A,F');}
+\NormalTok{U = [Ua U' Ub];}
+\CommentTok{#wykres}
+\NormalTok{plot(x2, U, x2, g(x2), 'ro');}
+\NormalTok{legend('Metoda Analityczna','Metoda Numeryczna',0);}
+\CommentTok{#error}
+\NormalTok{E = max(abs(g(x2) - U));}
 
-\subsection{Wykres}
- 
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+\newpage
+\subsection{Wykresy}
+a)
+
+Dla 10 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad1/lab_3_1_n_10.png}
+
+}
+
+Dla 25 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad1/lab_3_1_n_25.png}
+
+}
+
+\newpage
+
+Dla 100 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad1/lab_3_1_n_100.png}
+
+}
+
+Dla 1000 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad1/lab_3_1_n_1000.png}
+
+}
+
+\newpage
+
+Błąd metody w zalezności od liczby węzłów:
+
+\includegraphics{Lab3/charts/zad1/error_dane.png}
+
+\includegraphics{Lab3/charts/zad1/error.png}
+
+\newpage
+
+b)
+
+Dla 10 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad2/lab_3_2_n_10.png}
+
+}
+
+Dla 25 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad2/lab_3_2_n_25.png}
+
+}
+
+\newpage
+
+Dla 100 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad2/lab_3_2_n_100.png}
+
+}
+
+Dla 1000 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad2/lab_3_2_n_1000.png}
+
+}
+
+\newpage
+
+Błąd metody w zalezności od liczby węzłów:
+
+\includegraphics{Lab3/charts/zad2/error_dane.png}
+
+\includegraphics{Lab3/charts/zad2/error.png}
+
 
