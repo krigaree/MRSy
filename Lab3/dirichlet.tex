@@ -84,6 +84,7 @@ Rozwiązanie analityczne: $\widetilde{u}(x) = 2x^{3}-x$
 Ponadto zaprezentujemy wykres porównujący rozwiązanie numeryczne z rozwiązaniem analitycznym, a także wykres błędu $||E||_{\infty}$ w zależności od liczby obranych węzłów (n).
 
 \subsection{Algorytm}
+a)
 \begin{samepage}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -109,6 +110,15 @@ Ponadto zaprezentujemy wykres porównujący rozwiązanie numeryczne z rozwiązan
 \NormalTok{U = linsolve(A,F');}
 \NormalTok{U = [Ua U' Ub];}
 \CommentTok{#wykres}
+\NormalTok{plot(x2, U, x2, g(x2), 'ro');}
+\NormalTok{legend('Metoda Analityczna','Metoda Numeryczna');}
+\CommentTok{#error}
+\NormalTok{E = max(abs(g(x2) - U));}
+\end{Highlighting}
+\end{Shaded}
+\end{samepage}
+\newpage
+b)
 \NormalTok{hold on}
 \NormalTok{plot(x2,U', 'r')}
 \NormalTok{plot(x2,g(x2),'b')}
@@ -116,7 +126,6 @@ Ponadto zaprezentujemy wykres porównujący rozwiązanie numeryczne z rozwiązan
 \end{Highlighting}
 \end{Shaded}
 \end{samepage}
-
 \begin{samepage}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -143,15 +152,103 @@ Ponadto zaprezentujemy wykres porównujący rozwiązanie numeryczne z rozwiązan
 \NormalTok{U = linsolve(A,F');}
 \NormalTok{U = [Ua U' Ub];}
 \CommentTok{#wykres}
-\NormalTok{hold on}
-\NormalTok{plot(x2,U', \StringTok{'r'})}
-\NormalTok{plot(x2,g(x2),\StringTok{'b'})}
-\NormalTok{hold off}
+\NormalTok{plot(x2, U, x2, g(x2), 'ro');}
+\NormalTok{legend('Metoda Analityczna','Metoda Numeryczna',0);}
+\CommentTok{#error}
+\NormalTok{E = max(abs(g(x2) - U));}
+
 \end{Highlighting}
 \end{Shaded}
 \end{samepage}
+\newpage
+\subsection{Wykresy}
+a)
 
+Dla 10 węzłów:
 
-\subsection{Wykres}
+{\centering
 
+\includegraphics{Lab3/charts/zad1/lab_3_1_n_10.png}
+
+}
+
+Dla 25 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad1/lab_3_1_n_25.png}
+
+}
+
+\newpage
+
+Dla 100 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad1/lab_3_1_n_100.png}
+
+}
+
+Dla 1000 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad1/lab_3_1_n_1000.png}
+
+}
+
+\newpage
+
+Błąd metody w zalezności od liczby węzłów:
+
+\includegraphics{Lab3/charts/zad1/error_dane.png}
+
+\includegraphics{Lab3/charts/zad1/error.png}
+
+\newpage
+
+b)
+
+Dla 10 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad2/lab_3_2_n_10.png}
+
+}
+
+Dla 25 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad2/lab_3_2_n_25.png}
+
+}
+
+\newpage
+
+Dla 100 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad2/lab_3_2_n_100.png}
+
+}
+
+Dla 1000 węzłów:
+
+{\centering
+
+\includegraphics{Lab3/charts/zad2/lab_3_2_n_1000.png}
+
+}
+
+\newpage
+
+Błąd metody w zalezności od liczby węzłów:
+
+\includegraphics{Lab3/charts/zad2/error_dane.png}
+
+\includegraphics{Lab3/charts/zad2/error.png}
 

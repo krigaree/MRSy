@@ -20,7 +20,7 @@ F(n) = F(n) - Ub;
 U = linsolve(A,F');
 U = [Ua U' Ub];
 #wykres
-hold on
-plot(x2,U', 'r')
-plot(x2,g(x2),'b')
-hold off
+plot(x2, U, x2, g(x2), 'ro');
+legend('Metoda Analityczna','Metoda Numeryczna',0);
+#error
+E = max(abs(g(x2) - U));

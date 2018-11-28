@@ -9,7 +9,7 @@ cx = @(x) 1;
 ua = 0;
 ubf = 2 * exp(1);
 c = b-a;
-n = 10;
+n = 25;
 h = c/(n+1);
 x = linspace((a+h),(b-h),n);
 
