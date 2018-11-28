@@ -1,5 +1,5 @@
 clear, clc;
-#dane wejœciowe
+#dane wejï¿½ciowe
 f = @(x) exp(x) .* (-x .^2 + x + 2);
 g = @(x) x .* exp(x);
 a = 0;

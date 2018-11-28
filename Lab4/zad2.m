@@ -1,5 +1,5 @@
 clear, clc;
-#dane wejœciowe
+#dane wejï¿½ciowe
 f = @(x) cos(x);
 g = @(x) -1/10 * (sin(x) + 3* cos(x));
 a = 0;
@@ -30,4 +30,5 @@ X = [a x b];
 plot(X, U, X, g(X), 'ro');
 legend('Metoda Analityczna','Metoda Numeryczna',0);
 #error
+plot(X, U, X, g(X), 'ro');
 E = max(abs(g(X) - U));

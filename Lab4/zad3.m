@@ -1,5 +1,5 @@
 clear, clc;
-#dane wejœciowe
+#dane wejï¿½ciowe
 f = @(x) -4*x.^2;
 g = @(x) x.^2 - x;
 a = 0;

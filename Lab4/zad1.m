@@ -1,5 +1,5 @@
 clear, clc;
-#dane wejœciowe
+#dane wejï¿½ciowe
 f = @(x) -4*x;
 g = @(x) exp(2) * (exp(4) - 1 )^-1 * (exp(2*x) - exp(-2*x)) + x;
 a = 0;

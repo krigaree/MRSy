@@ -1,8 +1,8 @@
 clear, clc;
-#dane wejœciowe
+#dane wejï¿½ciowe
 a=0;
 b=2*pi;
-n=input('Podaj liczbe wezlow: ');
+n=input('Podaj liczbe wï¿½zï¿½ï¿½w: ');
 h = (b-a)/(n-1);
 Ua = 0;
 Ub = 0;
