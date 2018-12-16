@@ -104,13 +104,14 @@ a)
 \NormalTok{A = }\FunctionTok{diag}\NormalTok{(v1) + }\FunctionTok{diag}\NormalTok{(v2,}\FloatTok{1}\NormalTok{) + }\FunctionTok{diag}\NormalTok{(v2,-}\FloatTok{1}\NormalTok{);}
 \NormalTok{x= }\FunctionTok{linspace}\NormalTok{(a+h,b-h,n);}
 \NormalTok{x2 = }\FunctionTok{linspace}\NormalTok{(a,b,n+}\FloatTok{2}\NormalTok{);}
+\NormalTok{x3 = }\FunctionTok{linspace}\NormalTok{(a,b,100}\NormalTok{);}
 \NormalTok{F = f(x)*h^}\FloatTok{2}\NormalTok{;}
 \NormalTok{F(}\FloatTok{1}\NormalTok{) = F(}\FloatTok{1}\NormalTok{) - Ua;}
 \NormalTok{F(n) = F(n) - Ub;}
 \NormalTok{U = linsolve(A,F');}
 \NormalTok{U = [Ua U' Ub];}
 \CommentTok{#wykres}
-\NormalTok{plot(x2, U, x2, g(x2), 'ro');}
+\NormalTok{plot(x3, g(x3), x2, g(x2), 'ro');}
 \NormalTok{legend('Metoda Analityczna','Metoda Numeryczna');}
 \CommentTok{#error}
 \NormalTok{E = max(abs(g(x2) - U));}
@@ -119,13 +120,6 @@ a)
 \end{samepage}
 \newpage
 b)
-\NormalTok{hold on}
-\NormalTok{plot(x2,U', 'r')}
-\NormalTok{plot(x2,g(x2),'b')}
-\NormalTok{hold off}
-\end{Highlighting}
-\end{Shaded}
-\end{samepage}
 \begin{samepage}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -146,13 +140,14 @@ b)
 \NormalTok{A = }\FunctionTok{diag}\NormalTok{(v1) + }\FunctionTok{diag}\NormalTok{(v2,}\FloatTok{1}\NormalTok{) + }\FunctionTok{diag}\NormalTok{(v2,-}\FloatTok{1}\NormalTok{);}
 \NormalTok{x= }\FunctionTok{linspace}\NormalTok{(a+h,b-h,n);}
 \NormalTok{x2 = }\FunctionTok{linspace}\NormalTok{(a,b,n+}\FloatTok{2}\NormalTok{);}
+\NormalTok{x3 = }\FunctionTok{linspace}\NormalTok{(a,b,100}\NormalTok{);}
 \NormalTok{F = f(x)*h^}\FloatTok{2}\NormalTok{;}
 \NormalTok{F(}\FloatTok{1}\NormalTok{) = F(}\FloatTok{1}\NormalTok{) - Ua;}
 \NormalTok{F(n) = F(n) - Ub;}
 \NormalTok{U = linsolve(A,F');}
 \NormalTok{U = [Ua U' Ub];}
 \CommentTok{#wykres}
-\NormalTok{plot(x2, U, x2, g(x2), 'ro');}
+\NormalTok{plot(x3, g(x3), x2, g(x2), 'ro');}
 \NormalTok{legend('Metoda Analityczna','Metoda Numeryczna',0);}
 \CommentTok{#error}
 \NormalTok{E = max(abs(g(x2) - U));}
@@ -175,7 +170,7 @@ Dla 10 węzłów:
 Dla 25 węzłów:
 
 {\centering
-
+	
 \includegraphics{Lab3/charts/zad1/lab_3_1_n_25.png}
 
 }
