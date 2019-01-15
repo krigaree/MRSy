@@ -22,4 +22,4 @@ F;
 Uv = linsolve(A,F);
   
 
-endfunction
+end
