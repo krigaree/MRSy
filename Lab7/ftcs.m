@@ -47,6 +47,3 @@ surf(X,T,(G(X,T)))
 title('Metoda Analityczna')
 licznik
 toc
-
-
-

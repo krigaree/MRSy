@@ -25,7 +25,7 @@ war4 = @(y) log(y.^2+1);
 n=50;
 m=n;
 
-h=(xb-xa)/(n+1);
+h=(xb-xa)/(n-1);
 x=linspace(xa,xb,n+2);
 y=linspace(yc,yd,m+2);
 
@@ -42,6 +42,7 @@ M4(1:m) = war4(y(2:length(y)-1));
 
 M0=[M4', M0, M2'];
 M0=[M1;M0;M3];
+M=M0;
 
 for i=1:m+2
     for j=1:n+2
@@ -52,16 +53,16 @@ end
 while error>tol
     for i=2:m+1
         for j=2:n+1
-            M(i-1,j-1) =0.25*(M0(i+1,j)+M0(i-1,j)+M0(i,j+1)+M0(i,j-1))-0.25*h^2*F(x(j),y(i));
+            M(i,j) =0.25*(M(i+1,j)+M(i-1,j)+M(i,j+1)+M(i,j-1))-0.25*h^2*F(x(j),y(i));
         end
     end
     
-    error=max(max(abs(M0(2:m+1,2:n+1)-M)));
-    M0(2:m+1,2:n+1)=M;
+    error=max(max(abs(M0-M)));
+    M0=M;
     licznik = licznik+1;
     
 end
-toc
+
 %wykresy
 [X,Y] = meshgrid(x,y);
 subplot(1,2,1)
@@ -72,4 +73,4 @@ surf(X,Y,(G(X,Y)))
 title('Metoda Analityczna')
 
 licznik
-
+toc

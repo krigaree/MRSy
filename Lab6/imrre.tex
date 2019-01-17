@@ -2,7 +2,7 @@
 
 Będziemy korzystać z równania:
 
-$u_{i,j} = \frac{1}{4}(u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1}) - \frac{1}{4}h^2f_{i,j}$
+$$u_{i,j} = \frac{1}{4}(u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1}) - \frac{1}{4}h^2f_{i,j}$$
 
 \vspace{0.5cm}
 
@@ -51,7 +51,7 @@ $u(x,y) = ln(x^2 + y^2)$ \hspace{3.1cm} $u(x,y) = cos(x)\cdot cos(y)$
 
 \vspace{0.5cm}
 
-trzema metodami: Jacobiego, Gaussa $-$ Seidela oraz Peacemanna $-$ Rachforda.
+Trzema metodami: Jacobiego, Gaussa $-$ Seidela oraz nadrelaksacji Younge'a. Dodatkowo przedstawimy dwupoziomową metodę Peacemanna $-$ Rachforda.
 
 \subsection{Metoda Jacobiego}
 
@@ -205,10 +205,258 @@ Schemat ten jest pozornie niejawny, ale w rzeczywistości uwzględnia on w kroku
 
 a)
 
+//kod gs1
+
 b)
 
-\subsection{Wykres}
+//kod gs2
 
+\subsection{Wykresy}
 
+a)
 
+Dla n = 5:
 
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/gs/zad1/5.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 21 $
+
+Czas wykonywania algorytmu $ = 0.167 s$
+
+Dla n = 15:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/gs/zad1/15.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 75 $
+
+Czas wykonywania algorytmu $ = 0.181 s$
+
+Dla n = 30:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/gs/zad1/30.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 232 $
+
+Czas wykonywania algorytmu $ = 0.241 s$
+
+Dla n = 50:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/gs/zad1/50.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 485 $
+
+Czas wykonywania algorytmu $ = 0.548 s$
+
+b)
+
+Dla n = 5:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/gs/zad2/5.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 14 $
+
+Czas wykonywania algorytmu $ = 0.177 s$
+
+Dla n = 15:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/gs/zad2/15.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 78 $
+
+Czas wykonywania algorytmu $ = 0.175 s$
+
+Dla n = 35:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/gs/zad2/35.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 304 $
+
+Czas wykonywania algorytmu $ = 0.242 s$
+
+Dla n = 55:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/gs/zad2/55.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 621 $
+
+Czas wykonywania algorytmu $ = 0.511 s$
+
+\subsection{Metoda nadrelaksacji Younge'a}
+
+Rozważmy modyfikację metody Gaussa $-$ Seidela.
+
+$$u_{i,j}^{(n+1)} = \frac{1}{4}\omega(u_{i+1,j}^{(n)} + u_{i-1,j}^{(n+1)} + u_{i,j+1}^{(n)} + u_{i,j-1}^{(n+1)}) + (1-\omega)u^n_{i,j} - \frac{1}{4}h^2f_{i,j}$$
+
+, gdzie $\omega \hspace{0.1cm} -$ parametr relaksacji
+
+Zauważmy, gdy $\omega = 1$, otrzymujemy metodę Gaussa $-$ Seidela. 
+
+Właściwy wybór parametru relaksacji pozwala na znaczące przyspieszenie zbieżności metody.
+
+Young udowodnił, że wartość optymalna $\omega$ dana jest następującą zależnością:
+
+$$\omega_{opt}=1+\dfrac{\lambda}{(1+\sqrt{1-\lambda})^2}$$
+
+$$\lambda = \dfrac{1}{4}\Big(\cos\Big(\dfrac{\pi}{N}\Big) + \cos\Big(\dfrac{\pi}{M}\Big)\Big)^2$$
+
+, gdzie: M oraz N to liczba elementów, na które podzielono boki
+
+W przypadku innej geometrii niż prostokątna, dla równań Laplace'a i Poissona, $\lambda$ można obliczyć korzystając z tej zależności biorąc wymiar największego prostokąta, który zawiera ten obszar.
+
+Tak wyznaczony parametr relaksacji będzie wyższy niż optymalny, lecz Young udowodnił, że taki nadmiarowy współczynnik, nie zmniejsza znacząco szybkości zbieżności tej metody.
+
+\subsection{Algorytm}
+
+a)
+
+//kod young1
+
+b)
+
+//kod young2
+
+\subsection{Wykresy}
+
+a)
+
+Dla n = 5:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/young/zad1/5.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 15 $
+
+Czas wykonywania algorytmu $ = 0.183 s$
+
+Dla n = 15:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/young/zad1/15.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 33 $
+
+Czas wykonywania algorytmu $ = 0.181 s$
+
+Dla n = 30:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/young/zad1/30.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 64 $
+
+Czas wykonywania algorytmu $ = 0.197 s$
+
+Dla n = 50:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/young/zad1/50.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 104 $
+
+Czas wykonywania algorytmu $ = 0.269 s$
+
+b)
+
+Dla n = 5:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/young/zad2/5.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 13 $
+
+Czas wykonywania algorytmu $ = 0.176 s$
+
+Dla n = 15:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/young/zad2/15.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 28 $
+
+Czas wykonywania algorytmu $ = 0.180 s$
+
+Dla n = 35:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/young/zad2/35.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 54 $
+
+Czas wykonywania algorytmu $ = 0.192 s$
+
+Dla n = 55:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/young/zad2/55.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 84 $
+
+Czas wykonywania algorytmu $ = 0.227 s$
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=1\textwidth]{Lab6/charts/zestawienie_zad1.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=1\textwidth]{Lab6/charts/zestawienie_zad2.png}
+	\end{center}
+\end{figure}
