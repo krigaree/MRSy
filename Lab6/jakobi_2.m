@@ -16,10 +16,10 @@ yc=0;
 yd=pi/2;
 
 %warunki brzegowe
-u1 = @(x) cos(x);
-u2 = @(y) -cos(y);
-u3 = @(x) 0;
-u4 = @(y) cos(y);
+war1 = @(x) cos(x);
+war2 = @(y) -cos(y);
+war3 = @(x) 0;
+war4 = @(y) cos(y);
 
 %siatka
 n=55;
@@ -34,14 +34,14 @@ error = 10;
 licznik=0; 
 
 %tworzenie macierzy
-U0=zeros(m,n)+1;
-U1(1:n+2) = u1(x);
-U2(1:m) = u2(y(2:length(y)-1));
-U3(1:n+2) = u3(x);
-U4(1:m) = u4(y(2:length(y)-1));
+M0=zeros(m,n)+1;
+M1(1:n+2) = war1(x);
+M2(1:m) = war2(y(2:length(y)-1));
+M3(1:n+2) = war3(x);
+M4(1:m) = war4(y(2:length(y)-1));
 
-U0=[U4', U0, U2'];
-U0=[U1;U0;U3];
+M0=[M4', M0, M2'];
+M0=[M1;M0;M3];
 
 for i=1:m+2
     for j=1:n+2
@@ -52,12 +52,12 @@ end
 while error>tol
     for i=2:m+1
         for j=2:n+1
-            U(i-1,j-1) =0.25*(U0(i+1,j)+U0(i-1,j)+U0(i,j+1)+U0(i,j-1))-0.25*h^2*F(x(j),y(i));
+            M(i-1,j-1) =0.25*(M0(i+1,j)+M0(i-1,j)+M0(i,j+1)+M0(i,j-1))-0.25*h^2*F(x(j),y(i));
         end
     end
     
-    error=max(max(abs(U0(2:m+1,2:n+1)-U)));
-    U0(2:m+1,2:n+1)=U;
+    error=max(max(abs(M0(2:m+1,2:n+1)-M)));
+    M0(2:m+1,2:n+1)=M;
     licznik = licznik+1;
     
 end
@@ -65,7 +65,7 @@ end
 %wykresy
 [X,Y] = meshgrid(x,y);
 subplot(1,2,1)
-surf(X,Y,U0)
+surf(X,Y,M0)
 title('Metoda Numeryczna')
 subplot(1,2,2)
 surf(X,Y,(G(X,Y)))
