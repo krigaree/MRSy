@@ -11,9 +11,9 @@ Rozpatrzmy równanie:
 \[
 \begin{cases}
 \vspace{0.1cm} 
-\hspace{0,1cm}\frac{\delta^2 u}{\delta x^2} + \frac{\delta^2 u}{\delta y^2} = f\\
+\hspace{0,1cm}\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = f\\
 \vspace{0.1cm}
-\hspace{0,1cm}u_{|\delta \Omega} = \overline{u} \\
+\hspace{0,1cm}u_{|\partial \Omega} = \widetilde{u} \\
 \end{cases}
 \]
 
@@ -31,7 +31,7 @@ Naszym zadaniem było stworzenie algorytmu rozwiązującego następujące równa
 
 a) \hspace{6cm} b)
 
-$\frac{\delta^2 u}{\delta x^2} + \frac{\delta^2 u}{\delta y^2} = 0$ \hspace{4.15cm} $\frac{\delta^2 u}{\delta x^2} + \frac{\delta^2 u}{\delta y^2} = -cos(x+y)-cos(x-y)$
+$\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0$ \hspace{4.15cm} $\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = -cos(x+y)-cos(x-y)$
 
 , gdzie: \hspace{5.2cm} , gdzie:
 
@@ -73,12 +73,12 @@ $$u_{i,j}^{(n)} = \frac{1}{4}(u_{i+1,j}^{(n)} + u_{i-1,j}^{(n)} + u_{i,j+1}^{(n)
 
 a)
 
-//kod z jacobi1
-
+\input{Lab6/jakobi_1}
+\newpage
 b)
 
-//kod z jacobi1
-
+\input{Lab6/jakobi_2}
+\newpage
 \subsection{Wykresy}
 
 a)
@@ -87,7 +87,7 @@ Dla n = 5:
 
 \begin{figure}[!ht]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Lab6/charts/jacobi/zad1/5.png}
+		\includegraphics[width=0.78\textwidth]{Lab6/charts/jacobi/zad1/5.png}
 	\end{center}
 \end{figure}
 
@@ -95,13 +95,12 @@ Liczba wykonanych iteracji $ = 38 $
 
 Czas wykonywania algorytmu $ = 0.177 s$
 
-\newpage
 
 Dla n = 15:
 
 \begin{figure}[!ht]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Lab6/charts/jacobi/zad1/15.png}
+		\includegraphics[width=0.78\textwidth]{Lab6/charts/jacobi/zad1/15.png}
 	\end{center}
 \end{figure}
 
@@ -109,7 +108,7 @@ Dla n = 15:
 Liczba wykonanych iteracji $ = 170 $
 
 Czas wykonywania algorytmu $ = 0.202 s$
-
+\newpage
 Dla n = 30:
 
 \begin{figure}[!ht]
@@ -122,7 +121,7 @@ Liczba wykonanych iteracji $ = 415 $
 
 Czas wykonywania algorytmu $ = 0.289 s$
 
-\newpage
+
 
 Dla n = 50:
 
@@ -135,7 +134,7 @@ Dla n = 50:
 Liczba wykonanych iteracji $ = 797 $
 
 Czas wykonywania algorytmu $ = 0.777 s$
-
+\newpage
 b)
 
 Dla n = 5:
@@ -174,7 +173,7 @@ Liczba wykonanych iteracji $ = 529 $
 
 Czas wykonywania algorytmu $ = 0.294 s$
 
-\newpage
+
 
 Dla n = 55:
 
@@ -188,7 +187,7 @@ Liczba wykonanych iteracji $ = 1058 $
 
 Czas wykonywania algorytmu $ = 0.753 s$
 
-
+\newpage
 \subsection{Metoda Gaussa - Seidela	}
 
 Jest to dowolona modyfikacja metody Jacobiego, a wprowadzana zmiana niemal dwukrotnie przyspiesza tempo zbieżności.
@@ -200,17 +199,17 @@ Dowolne pierwsze przybliżenie (poprawione):
 $$u_{i,j}^{(n+1)} = \frac{1}{4}(u_{i+1,j}^{(n)} + u_{i-1,j}^{(n+1)} + u_{i,j+1}^{(n)} + u_{i,j-1}^{(n+1)}) - \frac{1}{4}h^2f_{i,j}$$
 
 Schemat ten jest pozornie niejawny, ale w rzeczywistości uwzględnia on w kroku $n+1$ poprawkę wcześniej już obliczoną.
-
+\newpage
 \subsection{Algorytm}
 
 a)
 
-//kod gs1
-
+\input{Lab6/gs_1}
+\newpage
 b)
 
-//kod gs2
-
+\input{Lab6/gs_2}
+\newpage
 \subsection{Wykresy}
 
 a)
@@ -219,7 +218,7 @@ Dla n = 5:
 
 \begin{figure}[!ht]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Lab6/charts/gs/zad1/5.png}
+		\includegraphics[width=0.78\textwidth]{Lab6/charts/gs/zad1/5.png}
 	\end{center}
 \end{figure}
 
@@ -231,14 +230,14 @@ Dla n = 15:
 
 \begin{figure}[!ht]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Lab6/charts/gs/zad1/15.png}
+		\includegraphics[width=0.78\textwidth]{Lab6/charts/gs/zad1/15.png}
 	\end{center}
 \end{figure}
-
 Liczba wykonanych iteracji $ = 75 $
 
 Czas wykonywania algorytmu $ = 0.181 s$
 
+\newpage
 Dla n = 30:
 
 \begin{figure}[!ht]
@@ -262,7 +261,7 @@ Dla n = 50:
 Liczba wykonanych iteracji $ = 485 $
 
 Czas wykonywania algorytmu $ = 0.548 s$
-
+\newpage
 b)
 
 Dla n = 5:
@@ -288,7 +287,7 @@ Dla n = 15:
 Liczba wykonanych iteracji $ = 78 $
 
 Czas wykonywania algorytmu $ = 0.175 s$
-
+\newpage
 Dla n = 35:
 
 \begin{figure}[!ht]
@@ -312,7 +311,7 @@ Dla n = 55:
 Liczba wykonanych iteracji $ = 621 $
 
 Czas wykonywania algorytmu $ = 0.511 s$
-
+\newpage
 \subsection{Metoda nadrelaksacji Younge'a}
 
 Rozważmy modyfikację metody Gaussa $-$ Seidela.
@@ -336,17 +335,17 @@ $$\lambda = \dfrac{1}{4}\Big(\cos\Big(\dfrac{\pi}{N}\Big) + \cos\Big(\dfrac{\pi}
 W przypadku innej geometrii niż prostokątna, dla równań Laplace'a i Poissona, $\lambda$ można obliczyć korzystając z tej zależności biorąc wymiar największego prostokąta, który zawiera ten obszar.
 
 Tak wyznaczony parametr relaksacji będzie wyższy niż optymalny, lecz Young udowodnił, że taki nadmiarowy współczynnik, nie zmniejsza znacząco szybkości zbieżności tej metody.
-
+\newpage
 \subsection{Algorytm}
 
 a)
 
-//kod young1
-
+\input{Lab6/young_1}
+\newpage
 b)
 
-//kod young2
-
+\input{Lab6/young_2}
+\newpage
 \subsection{Wykresy}
 
 a)
@@ -355,7 +354,7 @@ Dla n = 5:
 
 \begin{figure}[!ht]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Lab6/charts/young/zad1/5.png}
+		\includegraphics[width=0.78\textwidth]{Lab6/charts/young/zad1/5.png}
 	\end{center}
 \end{figure}
 
@@ -367,14 +366,14 @@ Dla n = 15:
 
 \begin{figure}[!ht]
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{Lab6/charts/young/zad1/15.png}
+		\includegraphics[width=0.78\textwidth]{Lab6/charts/young/zad1/15.png}
 	\end{center}
 \end{figure}
 
 Liczba wykonanych iteracji $ = 33 $
 
 Czas wykonywania algorytmu $ = 0.181 s$
-
+\newpage
 Dla n = 30:
 
 \begin{figure}[!ht]
@@ -398,7 +397,7 @@ Dla n = 50:
 Liczba wykonanych iteracji $ = 104 $
 
 Czas wykonywania algorytmu $ = 0.269 s$
-
+\newpage
 b)
 
 Dla n = 5:
@@ -424,7 +423,7 @@ Dla n = 15:
 Liczba wykonanych iteracji $ = 28 $
 
 Czas wykonywania algorytmu $ = 0.180 s$
-
+\newpage
 Dla n = 35:
 
 \begin{figure}[!ht]

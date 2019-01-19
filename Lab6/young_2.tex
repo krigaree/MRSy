@@ -3,19 +3,21 @@
 \CommentTok{%metoda Jacobiego}
 \FunctionTok{clc}\NormalTok{, }\FunctionTok{clear} \FunctionTok{all}\NormalTok{; }\FunctionTok{tic}
 \CommentTok{%funkcja}
-\NormalTok{F = @(x,y) }\FloatTok{0}\NormalTok{;}
+\NormalTok{F = @(x,y) -}\FunctionTok{cos}\NormalTok{(x+y)-}\FunctionTok{cos}\NormalTok{(x-y);}
 \CommentTok{%rozwiązanie analityczne}
-\NormalTok{G = @(x,y) }\FunctionTok{log}\NormalTok{(x.^}\FloatTok{2}\NormalTok{+y.^}\FloatTok{2}\NormalTok{);}
+\NormalTok{G = @(x,y) }\FunctionTok{cos}\NormalTok{(x).*}\FunctionTok{cos}\NormalTok{(y);}
 \CommentTok{%przedział omega}
-\NormalTok{xa=}\FloatTok{1}\NormalTok{; xb=}\FloatTok{2}\NormalTok{; yc=}\FloatTok{0}\NormalTok{; yd=}\FloatTok{1}\NormalTok{;}
+\NormalTok{xa=}\FloatTok{0}\NormalTok{; xb=}\BaseNTok{pi}\NormalTok{; yc=}\FloatTok{0}\NormalTok{; yd=}\BaseNTok{pi}\NormalTok{/}\FloatTok{2}\NormalTok{;}
 \CommentTok{%warunki brzegowe}
-\NormalTok{war1 = @(x) }\FloatTok{2}\NormalTok{*}\FunctionTok{log}\NormalTok{(x);}
-\NormalTok{war2 = @(y) }\FunctionTok{log}\NormalTok{(y.^}\FloatTok{2}\NormalTok{+}\FloatTok{4}\NormalTok{);}
-\NormalTok{war3 = @(x) }\FunctionTok{log}\NormalTok{(x.^}\FloatTok{2}\NormalTok{+}\FloatTok{1}\NormalTok{);}
-\NormalTok{war4 = @(y) }\FunctionTok{log}\NormalTok{(y.^}\FloatTok{2}\NormalTok{+}\FloatTok{1}\NormalTok{);}
+\NormalTok{war1 = @(x) }\FunctionTok{cos}\NormalTok{(x);}
+\NormalTok{war2 = @(y) -}\FunctionTok{cos}\NormalTok{(y);}
+\NormalTok{war3 = @(x) }\FloatTok{0}\NormalTok{;}
+\NormalTok{war4 = @(y) }\FunctionTok{cos}\NormalTok{(y);}
 \CommentTok{%siatka}
-\NormalTok{n=}\FloatTok{50}\NormalTok{; m=n; h=(xb-xa)/(n+}\FloatTok{1}\NormalTok{);}
-\NormalTok{x=}\FunctionTok{linspace}\NormalTok{(xa,xb,n+}\FloatTok{2}\NormalTok{); y=}\FunctionTok{linspace}\NormalTok{(yc,yd,m+}\FloatTok{2}\NormalTok{);}
+\NormalTok{n=}\FloatTok{55}\NormalTok{; m=(yd-yc)/(xb-xa)*(n+}\FloatTok{1}\NormalTok{)-}\FloatTok{1}\NormalTok{;}
+\NormalTok{lambda = }\FloatTok{0.25}\NormalTok{*(}\FunctionTok{cos}\NormalTok{(}\BaseNTok{pi}\NormalTok{/n)+}\FunctionTok{cos}\NormalTok{(}\BaseNTok{pi}\NormalTok{/m))^}\FloatTok{2}\NormalTok{;}
+\NormalTok{omega = }\FloatTok{1}\NormalTok{+(lambda/(}\FloatTok{1}\NormalTok{+}\FunctionTok{sqrt}\NormalTok{(}\FloatTok{1}\NormalTok{-lambda))^}\FloatTok{2}\NormalTok{);}
+\NormalTok{h=(xb-xa)/(n-}\FloatTok{1}\NormalTok{); x=}\FunctionTok{linspace}\NormalTok{(xa,xb,n+}\FloatTok{2}\NormalTok{); y=}\FunctionTok{linspace}\NormalTok{(yc,yd,m+}\FloatTok{2}\NormalTok{);}
 \NormalTok{tol=}\FloatTok{1e-4}\NormalTok{; }\FunctionTok{error}\NormalTok{ = }\FloatTok{10}\NormalTok{; licznik=}\FloatTok{0}\NormalTok{; }
 \CommentTok{%tworzenie macierzy}
 \NormalTok{M0=}\FunctionTok{zeros}\NormalTok{(m,n)+}\FloatTok{1}\NormalTok{;}
@@ -23,7 +25,7 @@
 \NormalTok{M2(}\FloatTok{1}\NormalTok{:m) = war2(y(}\FloatTok{2}\NormalTok{:}\FunctionTok{length}\NormalTok{(y)-}\FloatTok{1}\NormalTok{));}
 \NormalTok{M3(}\FloatTok{1}\NormalTok{:n+}\FloatTok{2}\NormalTok{) = war3(x);}
 \NormalTok{M4(}\FloatTok{1}\NormalTok{:m) = war4(y(}\FloatTok{2}\NormalTok{:}\FunctionTok{length}\NormalTok{(y)-}\FloatTok{1}\NormalTok{));}
-\NormalTok{M0=[M4', M0, M2']; M0=[M1;M0;M3];}
+\NormalTok{M0=[M4', M0, M2']; M0=[M1;M0;M3]; M=M0;}
 \NormalTok{for }\BaseNTok{i}\NormalTok{=}\FloatTok{1}\NormalTok{:m+}\FloatTok{2}
 \NormalTok{    for }\BaseNTok{j}\NormalTok{=}\FloatTok{1}\NormalTok{:n+}\FloatTok{2}
 \NormalTok{        g(}\BaseNTok{i}\NormalTok{,}\BaseNTok{j}\NormalTok{) = G(x(}\BaseNTok{j}\NormalTok{),y(}\BaseNTok{i}\NormalTok{));}
@@ -32,15 +34,13 @@
 \NormalTok{while }\FunctionTok{error}\NormalTok{>tol}
 \NormalTok{    for }\BaseNTok{i}\NormalTok{=}\FloatTok{2}\NormalTok{:m+}\FloatTok{1}
 \NormalTok{        for }\BaseNTok{j}\NormalTok{=}\FloatTok{2}\NormalTok{:n+}\FloatTok{1}
-\NormalTok{            M(}\BaseNTok{i}\NormalTok{-}\FloatTok{1}\NormalTok{,}\BaseNTok{j}\NormalTok{-}\FloatTok{1}\NormalTok{) =}\FloatTok{0.25}\NormalTok{*(M0(}\BaseNTok{i}\NormalTok{+}\FloatTok{1}\NormalTok{,}\BaseNTok{j}\NormalTok{)+M0(}\BaseNTok{i}\NormalTok{-}\FloatTok{1}\NormalTok{,}\BaseNTok{j}\NormalTok{)+M0(}\BaseNTok{i}\NormalTok{,}\BaseNTok{j}\NormalTok{+}\FloatTok{1}\NormalTok{)\textbackslash{}}
-\NormalTok{                              +M0(}\BaseNTok{i}\NormalTok{,}\BaseNTok{j}\NormalTok{-}\FloatTok{1}\NormalTok{))-}\FloatTok{0.25}\NormalTok{*h^}\FloatTok{2}\NormalTok{*F(x(}\BaseNTok{j}\NormalTok{),y(}\BaseNTok{i}\NormalTok{));}
+\NormalTok{            M(}\BaseNTok{i}\NormalTok{,}\BaseNTok{j}\NormalTok{) =}\FloatTok{0.25}\NormalTok{*omega*(M(}\BaseNTok{i}\NormalTok{+}\FloatTok{1}\NormalTok{,}\BaseNTok{j}\NormalTok{)+M(}\BaseNTok{i}\NormalTok{-}\FloatTok{1}\NormalTok{,}\BaseNTok{j}\NormalTok{)+M(}\BaseNTok{i}\NormalTok{,}\BaseNTok{j}\NormalTok{+}\FloatTok{1}\NormalTok{)+M(}\BaseNTok{i}\NormalTok{,}\BaseNTok{j}\NormalTok{-}\FloatTok{1}\NormalTok{))\textbackslash{}}
+\NormalTok{            +(}\FloatTok{1}\NormalTok{-omega)*M(}\BaseNTok{i}\NormalTok{,}\BaseNTok{j}\NormalTok{)-}\FloatTok{0.25}\NormalTok{*h^}\FloatTok{2}\NormalTok{*F(x(}\BaseNTok{j}\NormalTok{),y(}\BaseNTok{i}\NormalTok{));}
 \NormalTok{        end}
 \NormalTok{    end}
-    \FunctionTok{error}\NormalTok{=}\FunctionTok{max}\NormalTok{(}\FunctionTok{max}\NormalTok{(}\FunctionTok{abs}\NormalTok{(M0(}\FloatTok{2}\NormalTok{:m+}\FloatTok{1}\NormalTok{,}\FloatTok{2}\NormalTok{:n+}\FloatTok{1}\NormalTok{)-M)));}
-\NormalTok{    M0(}\FloatTok{2}\NormalTok{:m+}\FloatTok{1}\NormalTok{,}\FloatTok{2}\NormalTok{:n+}\FloatTok{1}\NormalTok{)=M;}
-\NormalTok{    licznik = licznik+}\FloatTok{1}\NormalTok{;}
+    \FunctionTok{error}\NormalTok{=}\FunctionTok{max}\NormalTok{(}\FunctionTok{max}\NormalTok{(}\FunctionTok{abs}\NormalTok{(M0-M)));}
+\NormalTok{    M0=M; licznik = licznik+}\FloatTok{1}\NormalTok{;}
 \NormalTok{end}
-\FunctionTok{toc}
 \CommentTok{%wykresy}
 \NormalTok{[X,Y] = }\FunctionTok{meshgrid}\NormalTok{(x,y);}
 \FunctionTok{subplot}\NormalTok{(}\FloatTok{1}\NormalTok{,}\FloatTok{2}\NormalTok{,}\FloatTok{1}\NormalTok{)}
@@ -49,6 +49,6 @@
 \FunctionTok{subplot}\NormalTok{(}\FloatTok{1}\NormalTok{,}\FloatTok{2}\NormalTok{,}\FloatTok{2}\NormalTok{)}
 \FunctionTok{surf}\NormalTok{(X,Y,(G(X,Y)))}
 \FunctionTok{title}\NormalTok{(}\StringTok{'Metoda Analityczna'}\NormalTok{)}
-\NormalTok{licznik}
+\NormalTok{licznik; }\FunctionTok{toc}
 \end{Highlighting}
 \end{Shaded}
