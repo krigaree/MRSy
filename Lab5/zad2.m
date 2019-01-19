@@ -1,7 +1,7 @@
 clear, clc;
-% zad 3
+% zad 2
 % Przykładowe dane
-nx = 10; ny = 10; xa = 0; xb = 2; ya = 0; yb = 1;
+nx = 10; ny = 50; xa = 0; xb = 2; ya = 0; yb = 1;
 f = @(x, y) (x.^2 + y.^2) .* exp(x.*y);
 g = @(x, y) exp(x.*y);
 uxa = @(x) 1;         %u1
@@ -14,20 +14,20 @@ h = (xb-xa)/(nx+1);
 k = (yb-ya)/(ny+1);
 xM = linspace(xa + h, xb - h, nx);
 yM  = linspace(ya+k, yb-k, ny);
-T = -4* eye(nx) + diag(diag(eye(nx-1)),-1) + diag(diag(eye(nx-1)),1);
+T = -2*(h^2 + k^2) * eye(nx) + k^2 * diag(diag(eye(nx-1)),-1) + k^2 * diag(diag(eye(nx-1)),1);
 I = eye(nx);
 B = kron(eye(ny), T);
-C = kron(diag(diag(eye(ny-1)),-1), I);
-D = kron(diag(diag(eye(ny-1)),1), I);
+C = kron(diag(diag(eye(ny-1)),-1), h^2 * I);
+D = kron(diag(diag(eye(ny-1)),1), h^2 * I);
 A = B + C + D;
 
 [X1 Y1] = meshgrid(xM,yM);
 F = f(X1, Y1)' .* ones(nx, ny);
-F = h^2 .* F;
-F(:, 1) = F(:, 1) - uxa(xM)';
-F(:, ny) = F(:, ny) - uxb(xM)';
-F(1, :) = F(1, :) - uya(yM);
-F(nx, :) = F(nx, :) - uyb(yM);
+F = h^2 * k^2 .* F;
+F(:, 1) = F(:, 1) - h^2 * uxa(xM)';
+F(:, ny) = F(:, ny) - h^2 * uxb(xM)';
+F(1, :) = F(1, :) - k^2 * uya(yM);
+F(nx, :) = F(nx, :) - k^2 * uyb(yM);
 F = reshape(F,  nx*ny, 1);
 % Rozwiązanie
 U = linsolve(A,F);

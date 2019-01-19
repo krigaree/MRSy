@@ -22,7 +22,7 @@ u3 = @(x) log(x.^2+1);
 u4 = @(y) log(y.^2+1);
 
 %siatka
-n=7;
+n=2;
 
 h=(xb-xa)/(n+1);
 k=(yd-yc)/(xb-xa)*(n+1)-1;
@@ -47,45 +47,43 @@ U(:,n+2) = U2(1:k+2);
 Uk=U;
 R = createR(n+1);
 lR = length(R); 
-while licznik<150
-    
-
-    
-    r = R(mod(licznik,lR)+1);
-    %if (mod(licznik,2) == 1)
-      %disp('step n')
-      step = true; %step n -> n+1/2
-      iter = length(y);
-      for i=2:iter-1
-         %start from 1 to 3
-        Uk(2:iter-1, i) = doStep(i, r, F, x, y, U, step);
-        Uk(2:iter-1, i);
-      end
-      U = Uk;
-    %else %step n+1/2 -> n
-      %disp('step n1/2')
-      step = false;
+while error>tol
+      r = R(mod(licznik,lR)+1);
+      %step n -> n+1/2
+      step = true;
       iter = length(x);
       for i=2:iter-1
-        %r = R(mod(i+1,lR)+1); %start from 1 to 3
         Uk(i, 2:iter-1) = doStep(i, r, F, x, y, U, step);
         Uk(i, 2:iter-1);
       end
-    %end
-    %U = Uk;
-    licznik = licznik+1;
-    error(licznik) = max(max(abs(Uk-U)));
+      U = Uk;
+      %step n+1/2 -> n+1
+      step = false; 
+      iter = length(y);
+      for i=2:iter-1
+        Uk(2:iter-1, i) = doStep(i, r, F, x, y, U, step);
+        Uk(2:iter-1, i);
+      end
+      licznik = licznik+1;
+      error = max(max(abs(Uk-U)));
+      Error(licznik) = error;
 
-    U=Uk;
+      U=Uk;
 end
 
 %wykresy
+n = 100;
+h2=(xb-xa)/(n+1);
+k2=(yd-yc)/(xb-xa)*(n+1)-1;
+x2=[xa:h2:xb];
+y2=[yc:h2:yd];
 [X,Y] = meshgrid(x,y);
+[X2,Y2] = meshgrid(x2,y2);
 subplot(1,2,1)
 surf(X,Y,U)
 title('Metoda Numeryczna')
 subplot(1,2,2)
-surf(X,Y,(G(X,Y)))
+surf(X2,Y2,(G(X2,Y2)))
 title('Metoda Analityczna')
 
 blad = max(max(abs(U-G(X,Y))))
