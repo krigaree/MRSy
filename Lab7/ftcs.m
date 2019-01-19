@@ -1,9 +1,9 @@
 clc,clear all
 tic
-%rozwi¹zanie analityczne
+%rozwiï¿½zanie analityczne
 G = @(x,t) sin(pi.*x./2).*exp(-(pi.^2).*t./4);
 
-%przedzia³ omega
+%przedziaï¿½ omega
 xa=0;
 xb=2;
 yc=0;
@@ -19,15 +19,15 @@ licznik=0;
 m=30;
 D=1;
 deltax=(xb-xa)/(m-1);
-x=[xa:deltax:xb];         %przedzia³ przestrzenny
-deltat=(deltax^2)/(20*D); %dzielimy od razu przez 10, aby wartoœæ nie by³a blisko deltat graniczne
+x=[xa:deltax:xb];         %przedziaï¿½ przestrzenny
+deltat=(deltax^2)/(20*D); %dzielimy od razu przez 10, aby wartoï¿½ï¿½ nie byï¿½a blisko deltat graniczne
 n_end=floor(yd/deltat)+1;
-t=[0:deltat:1];           %przedzia³ czasowy
+t=[0:deltat:1];           %przedziaï¿½ czasowy
 
 %macierz
 psi=zeros(n_end,length(x)); %utworzenie pustej macierzy
 
-for i=2:m-1                %dodanie warunku pocz¹tkowego
+for i=2:m-1                %dodanie warunku poczï¿½tkowego
   psi(1,i)=u3(x(i));
 end
                         
