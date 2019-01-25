@@ -13,7 +13,7 @@
 	$$\begin{bmatrix}1&2\\3&4\\\end{bmatrix}\otimes {\begin{bmatrix}0&5\\6&7\\\end{bmatrix}}={\begin{bmatrix}1\cdot {\begin{bmatrix}0&5\\6&7\\\end{bmatrix}}&2\cdot {\begin{bmatrix}0&5\\6&7\\\end{bmatrix}}\\3\cdot {\begin{bmatrix}0&5\\6&7\\\end{bmatrix}}&4\cdot {\begin{bmatrix}0&5\\6&7\\\end{bmatrix}}\\\end{bmatrix}}={\begin{bmatrix}1\cdot 0&1\cdot 5&2\cdot 0&2\cdot 5\\1\cdot 6&1\cdot 7&2\cdot 6&2\cdot 7\\3\cdot 0&3\cdot 5&4\cdot 0&4\cdot 5\\3\cdot 6&3\cdot 7&4\cdot 6&4\cdot 7\\\end{bmatrix}}={\begin{bmatrix}0&5&0&10\\6&7&12&14\\0&15&0&20\\18&21&24&28\end{bmatrix}}$$
 	
 	\subsection{Cel ćwiczenia}
-	Dla zadanych macierzy A, B, C mieliśmy utworzyć odpowienie macierze przy pomocy iloczynu Kroneckera.
+	Naszym zadaniem było utworzenie odpowiednich macierzy przy pomocy iloczynu Kroneckera. Zadane macierze: 
 	
 		$$A = \begin{bmatrix}2&-1\\-1&2\\\end{bmatrix},  B = \begin{bmatrix}0&-1\\2&3\\\end{bmatrix},  C = \begin{bmatrix}1&1\\1&2\\\end{bmatrix} $$
 	
@@ -29,7 +29,7 @@
 \NormalTok{B=[}\FloatTok{0}\NormalTok{,-}\FloatTok{1}\NormalTok{;}\FloatTok{2}\NormalTok{,}\FloatTok{3}\NormalTok{];}
 \NormalTok{C=[}\FloatTok{1}\NormalTok{,}\FloatTok{1}\NormalTok{;}\FloatTok{1}\NormalTok{,}\FloatTok{2}\NormalTok{];}
         
-\NormalTok{n=}\FloatTok{input("Enter a number: ")}\NormalTok{;}
+\NormalTok{n=}\FloatTok{input("Podaj rząd macierzy: ")}\NormalTok{;}
         
 \NormalTok{E1 = }\FunctionTok{kron}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n),A)}
 \end{Highlighting}
