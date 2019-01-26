@@ -18,7 +18,7 @@ $x\in[a,b]$
 \\
 Okazuje się że stosowanie schematów na pochodną różnego rzędu o tej samej dokładności skutkuje tym, że cała metoda jest również rzędu II.
 
-\subsubsection{Cel ćwiczenia}
+\subsection{Cel ćwiczenia}
 Na laboratorium otrzymaliśmy następujące równania dla których mieliśmy stworzyć rozwiązujący je algorytm.
 
 a)
@@ -82,7 +82,7 @@ Poniżej przedstawiony został algorytm rozwiązania powyższych równań z przy
 \end{samepage}
 
 \newpage
-\subsubsection{Wykresy}
+\subsection{Wykresy}
 
 a)\\
 \begin{samepage}
@@ -130,37 +130,6 @@ Dla 100 węzłów:
 \FloatBarrier
 \end{samepage}
     
-
-    
-\begin{samepage}
-
-Dla 500 węzłów:
-
-\begin{figure}[!ht]
-    \begin{center}
-\includegraphics[width=0.8\textwidth]{Lab4/charts/zad1/zad1_n_500.png}
-    \end{center}
-    %\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
-    %\label{fig:picture}
-\end{figure}
-\FloatBarrier
-\end{samepage}
-
-\newpage
-\begin{samepage}
-Dla 750 węzłów:
-
-\begin{figure}[!ht]
-    \begin{center}
-    \includegraphics[width=0.8\textwidth]{Lab4/charts/zad1/zad1_n_750.png}
-    \end{center}
-    %\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
-    %\label{fig:picture}
-\end{figure}
-\FloatBarrier
-\end{samepage}
-    
-
 \begin{samepage}
 Dla 1000 węzłów:
 
@@ -364,18 +333,16 @@ c)\\
 \end{samepage} 
 
 \begin{samepage}
-    
-    \begin{figure}[!ht]
-        \begin{center}
-            \includegraphics[width=0.8\textwidth]{Lab4/charts/zad3/error.png}
-        \end{center}
-        %\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
-        %\label{fig:picture}
-    \end{figure}
-    \FloatBarrier
-\end{samepage}   
-    
-    
+	Błąd metody w zależności od liczby węzłów:
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad3/error.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage} 
 
 \subsection{Warunki brzegowe typu Neumanna}
 \textbf{Postać ogólna zagadnień brzegowych rzędu II z warunkami brzegowymi typu Neumanna:}
@@ -393,7 +360,7 @@ c)\\
 $x\in[a,b]$
 \\
 
-\subsubsection{Cel ćwiczenia}
+\subsection{Cel ćwiczenia}
 Kolejnym zadaniem było stworzenie algorytmów rozwiązujących zagadnienia brzegowe II rzędu z warunkami brzegowymi typu Neumanna.
 \\\\
 a) Pierwszego podejście polegało na wykorzystaniu schematu jednostronnego w celu aproksymacji pochodnej rzędu I występującej w warunku brzegowym typu Neumanna
@@ -419,7 +386,7 @@ $x\in [0,1]$
 \\
 Rozwiązanie analityczne: $\widetilde{u}(x) = (x+1)e^x$
 
-\subsubsection{Rozwiązanie}
+\subsection{Rozwiązanie}
 
 
 \begin{samepage}
@@ -436,3 +403,269 @@ b)
 c)
 \input{Lab4/zad4_3}
 \end{samepage}
+
+\newpage
+
+\subsection{Wykresy}
+
+a)\\
+\begin{samepage}
+	Dla 10 węzłów:
+	
+	%{\centering
+	
+	%   \includegraphics{Lab4/charts/zad1/zad1_n_10.png}
+	
+	%}
+	\FloatBarrier
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/1/10.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}
+
+\begin{samepage}
+	Dla 25 węzłów:
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/1/25.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}
+
+\newpage
+\begin{samepage}
+	
+	Dla 100 węzłów:
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/1/100.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}
+
+\begin{samepage}
+	Dla 1000 węzłów:
+	
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/1/1000.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}    
+
+\newpage
+
+\begin{samepage}
+	Błąd metody w zależności od liczby węzłów:
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/1/error_dane.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage} 
+
+\begin{samepage}
+	
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/1/error.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage} 
+
+\newpage
+
+b)\\
+\begin{samepage}
+	Dla 10 węzłów:
+	
+	%{\centering
+	
+	%   \includegraphics{Lab4/charts/zad1/zad1_n_10.png}
+	
+	%}
+	\FloatBarrier
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/2/10.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}
+
+\begin{samepage}
+	Dla 25 węzłów:
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/2/25.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}
+
+\newpage
+\begin{samepage}
+	
+	Dla 100 węzłów:
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/2/100.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}
+
+\begin{samepage}
+	Dla 1000 węzłów:
+	
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/2/1000.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}    
+
+\newpage
+
+\begin{samepage}
+	Błąd metody w zależności od liczby węzłów:
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/2/error_dane.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage} 
+
+\begin{samepage}
+	
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/2/error.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage} 
+
+\newpage
+
+c)\\
+\begin{samepage}
+	Dla 10 węzłów:
+	
+	%{\centering
+	
+	%   \includegraphics{Lab4/charts/zad1/zad1_n_10.png}
+	
+	%}
+	\FloatBarrier
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/3/10.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}
+
+\begin{samepage}
+	Dla 25 węzłów:
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/3/25.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}
+
+\newpage
+\begin{samepage}
+	
+	Dla 100 węzłów:
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/3/100.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}
+
+\begin{samepage}
+	Dla 1000 węzłów:
+	
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/3/1000.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage}    
+
+\newpage
+
+\begin{samepage}
+	Błąd metody w zależności od liczby węzłów:
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/3/error_dane.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage} 
+
+\begin{samepage}
+	
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad4/3/error.png}
+		\end{center}
+		%\caption{Schemat logiczny w edytorze LAD oraz tabela symboli}
+		%\label{fig:picture}
+	\end{figure}
+	\FloatBarrier
+\end{samepage} 
+
+
+

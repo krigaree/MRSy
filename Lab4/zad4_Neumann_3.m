@@ -9,8 +9,8 @@ cx = @(x) 1;
 ua = 0;
 ubf = 2 * exp(1);
 c = b-a;
-n = 25;
-h = c/(n+1);
+n = 750;
+h = c/(n+1)
 x = linspace((a+h),(b-h),n);
 
 a1 = [(-2 * ax(x) + cx(x) * h^2).* diag(eye(n)); 3];
@@ -31,4 +31,4 @@ U = linsolve(A,F');
 U = [ua U'];
 X = [a x b];
 plot(X, U, X, g(X), 'ro');
-E = max(abs(g(X) - U));
+E = max(abs(g(X) - U))
