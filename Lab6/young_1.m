@@ -1,4 +1,4 @@
-%metoda Jacobiego
+%metoda Younga
 clc
 clear all
 tic
@@ -27,7 +27,7 @@ m=n;
 lambda = 0.25*(cos(pi/n)+cos(pi/m))^2;
 omega = 1+(lambda/(1+sqrt(1-lambda))^2);
 
-h=(xb-xa)/(n-1);
+h=(xb-xa)/(1);
 x=linspace(xa,xb,n+2);
 y=linspace(yc,yd,m+2);
 

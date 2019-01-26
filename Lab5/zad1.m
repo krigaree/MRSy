@@ -1,7 +1,8 @@
 clear, clc;
+tic
 % zad 1
 % Przykładowe dane
-nx = 50; ny = 50; xa = 0; xb = 1; ya = 0; yb = 1;
+nx = 15; ny = 15; xa = 0; xb = 1; ya = 0; yb = 1;
 f = @(x, y) 0;
 g = @(x, y) x.*y;
 uxa = @(x) 0; %u1
@@ -42,5 +43,8 @@ Error = max(max(abs(G-U)));
 % Wykres
 subplot(1,2,1)
 surf(X,Y,U)
+title('Metoda Numeryczna')
 subplot(1,2,2)
 surf(X,Y,G)
+title('Metoda Analityczna')
+toc

@@ -1,4 +1,4 @@
-%metoda Jacobiego
+%metoda Gaussa - Seidela
 clc
 clear all
 tic

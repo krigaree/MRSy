@@ -25,7 +25,7 @@ war4 = @(y) log(y.^2+1);
 n=50;
 m=n;
 
-h=(xb-xa)/(n+1);
+h=(xb-xa)/(n-1);
 x=linspace(xa,xb,n+2);
 y=linspace(yc,yd,m+2);
 
