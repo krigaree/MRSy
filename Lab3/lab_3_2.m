@@ -3,7 +3,7 @@ clear, clc;
 a=0;
 b=1;
 n=1000;
-h = (b-a)/(n-1);
+h = (b-a)/(n+1)
 Ua = 0;
 Ub = 1;
 f = @(x) 12*x;
@@ -24,4 +24,4 @@ U = [Ua U' Ub];
 plot(x3, g(x3), x2, g(x2), 'ro')
 legend('Metoda Analityczna','Metoda Numeryczna',0);
 %error
-E = max(abs(g(x2) - U));
+E = max(abs(g(x2) - U))

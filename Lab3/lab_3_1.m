@@ -2,8 +2,8 @@ clear, clc;
 %dane wejœciowe
 a=0;
 b=2*pi;
-n=25;
-h = (b-a)/(n-1);
+n=1000;
+h = (b-a)/(n+1);
 Ua = 0;
 Ub = 0;
 f = @(x) -sin(x) - 4*sin(2*x);
@@ -24,4 +24,4 @@ U = [Ua U' Ub];
 plot(x3, g(x3), x2, g(x2), 'ro')
 legend('Metoda Analityczna', 'Metoda Numeryczna');
 %error
-E = max(abs(g(x2) - U))
+E = max(abs(g(x2) - U));
