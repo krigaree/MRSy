@@ -1,7 +1,8 @@
 clear, clc;
+tic
 % zad 3
 % Przykładowe dane
-nx = 10; ny = 10; xa = 1; xb = 2; ya = 1; yb = 2;
+nx = 100; ny = 100; xa = 1; xb = 2; ya = 1; yb = 2;
 f = @(x, y) x ./ y + y ./ x;
 g = @(x, y) x .* y .* log(x .* y);
 uxa = @(x) x .* log(x); %u1
@@ -10,7 +11,7 @@ uya = @(y) y .* log(y); %u4
 uyb = @(y) 2 * y .* log(2 * y); %u2
 
 % Obliczenia
-h = (xb-xa)/(nx+1);
+h = (xb-xa)/(nx+1)
 k = (yb-ya)/(ny+1);
 xM = linspace(xa + h, xb - h, nx);
 yM  = linspace(ya+k, yb-k, ny);
@@ -38,9 +39,12 @@ XM = [xa xM xb];
 G = g(X,Y);
 U = [uxa(XM)' .* diag(eye(nx+2)), U', uxb(XM)' .* diag(eye(nx+2))]';
 % Błąd
-Error = max(max(abs(G-U)));
+Error = max(max(abs(G-U)))
 % Wykres
 subplot(1,2,1)
 surf(X,Y,U)
+title('Metoda Numeryczna')
 subplot(1,2,2)
 surf(X,Y,G)
+title('Metoda Analityczna')
+toc

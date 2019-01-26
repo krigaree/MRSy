@@ -1,4 +1,4 @@
-%metoda Jacobiego
+%metoda Younga
 clc
 clear all
 tic

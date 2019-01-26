@@ -1,4 +1,4 @@
-%metoda Jacobiego
+%metoda Gaussa - Seidela
 clc
 clear all
 tic
@@ -71,6 +71,6 @@ title('Metoda Numeryczna')
 subplot(1,2,2)
 surf(X,Y,(G(X,Y)))
 title('Metoda Analityczna')
-
+Error = max(max(abs(M0-G(X,Y))))
 licznik
 toc
