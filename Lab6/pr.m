@@ -83,7 +83,7 @@ subplot(1,2,1)
 surf(X,Y,U)
 title('Metoda Numeryczna')
 subplot(1,2,2)
-surf(X2,Y2,(G(X2,Y2)))
+surf(X,Y,(G(X,Y)))
 title('Metoda Analityczna')
 
 blad = max(max(abs(U-G(X,Y))))

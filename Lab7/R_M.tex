@@ -1,0 +1,50 @@
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{clc}\NormalTok{,}\FunctionTok{clear} \FunctionTok{all}\NormalTok{; }\FunctionTok{tic}
+\CommentTok{%rozwiązanie analityczne}
+\NormalTok{G = @(x,t) }\FunctionTok{sin}\NormalTok{(}\BaseNTok{pi}\NormalTok{.*x./}\FloatTok{2}\NormalTok{).*}\FunctionTok{exp}\NormalTok{(-(}\BaseNTok{pi}\NormalTok{.^}\FloatTok{2}\NormalTok{).*t./}\FloatTok{4}\NormalTok{);}
+\CommentTok{%przedział omega}
+\NormalTok{xa=}\FloatTok{0}\NormalTok{; xb=}\FloatTok{2}\NormalTok{; yc=}\FloatTok{0}\NormalTok{; yd=}\FloatTok{1}\NormalTok{;}
+\CommentTok{%warunki brzegowe}
+\NormalTok{u1 = @(x) }\FloatTok{0}\NormalTok{;}
+\NormalTok{u2 = @(x) }\FloatTok{0}\NormalTok{;}
+\NormalTok{u3 = @(x,t) }\FunctionTok{sin}\NormalTok{(}\BaseNTok{pi}\NormalTok{*x/}\FloatTok{2}\NormalTok{);}
+\NormalTok{licznik=}\FloatTok{0}\NormalTok{;}
+\CommentTok{%siatka}
+\NormalTok{m=}\FloatTok{50}\NormalTok{; D=}\FloatTok{1}\NormalTok{;}
+\NormalTok{deltax=(xb-xa)/(m-}\FloatTok{1}\NormalTok{);}
+\NormalTok{x=[xa:deltax:xb];         }\CommentTok{%przedział przestrzenny}
+\NormalTok{deltat=(deltax^}\FloatTok{2}\NormalTok{)/D; n_end=}\FunctionTok{floor}\NormalTok{(yd/deltat)+}\FloatTok{1}\NormalTok{;}
+\NormalTok{t=[}\FloatTok{0}\NormalTok{:deltat:}\FloatTok{1}\NormalTok{];           }\CommentTok{%przedział czasowy}
+\NormalTok{theta = }\FloatTok{1}\NormalTok{/}\FloatTok{2}\NormalTok{ - deltax^}\FloatTok{2}\NormalTok{ / (}\FloatTok{12}\NormalTok{ * D * deltat);}
+\NormalTok{alfa = D * deltat / deltax^}\FloatTok{2}\NormalTok{;}
+\CommentTok{%macierz}
+\FunctionTok{psi}\NormalTok{=}\FunctionTok{zeros}\NormalTok{(n_end,}\FunctionTok{length}\NormalTok{(x)); }\CommentTok{%utworzenie pustej macierzy}
+\CommentTok{%dodanie warunku początkowego}
+\FunctionTok{psi}\NormalTok{(}\FloatTok{1}\NormalTok{,:) = u3(x);}
+\FunctionTok{psi}\NormalTok{(:,}\FloatTok{1}\NormalTok{) = u1(t);}
+\FunctionTok{psi}\NormalTok{(:,m) = u2(t);}
+\CommentTok{% Skopiowanie pierwszego kroku }
+\FunctionTok{psi}\NormalTok{(}\FloatTok{2}\NormalTok{,:) = }\FunctionTok{psi}\NormalTok{(}\FloatTok{1}\NormalTok{,:);}
+\NormalTok{F = }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{2}\NormalTok{));}
+\NormalTok{A1 = }\FunctionTok{eye}\NormalTok{(m-}\FloatTok{2}\NormalTok{) .* (}\FloatTok{2}\NormalTok{*alfa + }\FloatTok{1}\NormalTok{ + theta);}
+\NormalTok{A2 = }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{3}\NormalTok{)) * -alfa;}
+\NormalTok{A = A1 + }\FunctionTok{diag}\NormalTok{(A2,-}\FloatTok{1}\NormalTok{) + }\FunctionTok{diag}\NormalTok{(A2, }\FloatTok{1}\NormalTok{);}
+\NormalTok{for n=}\FloatTok{3}\NormalTok{:n_end}
+\NormalTok{  F = (}\FloatTok{1}\NormalTok{+}\FloatTok{2}\NormalTok{*theta) * }\FunctionTok{psi}\NormalTok{(n-}\FloatTok{1}\NormalTok{,}\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{) - theta * }\FunctionTok{psi}\NormalTok{(n-}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{);}
+\NormalTok{  F(}\FloatTok{1}\NormalTok{) = F(}\FloatTok{1}\NormalTok{) + alfa * }\FunctionTok{psi}\NormalTok{(n, }\FloatTok{1}\NormalTok{);}
+\NormalTok{  F(m-}\FloatTok{2}\NormalTok{) = F(m-}\FloatTok{2}\NormalTok{) + alfa * }\FunctionTok{psi}\NormalTok{(n, m);}
+  \FunctionTok{psi}\NormalTok{(n,}\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{) = linsolve(A,F');}
+\NormalTok{  licznik = licznik+}\FloatTok{1}\NormalTok{;}
+\NormalTok{end}
+\NormalTok{[X,T] = }\FunctionTok{meshgrid}\NormalTok{(x,t);}
+\FunctionTok{subplot}\NormalTok{(}\FloatTok{1}\NormalTok{,}\FloatTok{2}\NormalTok{,}\FloatTok{1}\NormalTok{)}
+\FunctionTok{surf}\NormalTok{(X,T,}\FunctionTok{psi}\NormalTok{)}
+\FunctionTok{title}\NormalTok{(}\StringTok{'Metoda Numeryczna'}\NormalTok{)}
+\FunctionTok{subplot}\NormalTok{(}\FloatTok{1}\NormalTok{,}\FloatTok{2}\NormalTok{,}\FloatTok{2}\NormalTok{)}
+\FunctionTok{surf}\NormalTok{(X,T,(G(X,T)))}
+\FunctionTok{title}\NormalTok{(}\StringTok{'Metoda Analityczna'}\NormalTok{)}
+\NormalTok{Error=}\FunctionTok{max}\NormalTok{(}\FunctionTok{max}\NormalTok{(}\FunctionTok{abs}\NormalTok{(}\FunctionTok{psi}\NormalTok{-G(X,T))));}
+\NormalTok{licznik; }\FunctionTok{toc}
+\end{Highlighting}
+\end{Shaded}
