@@ -29,7 +29,7 @@ k=(yd-yc)/(m+1);
 x=[xa:h:xb];
 y=[yc:k:yd];
 
-tol=1e-7;
+tol=1e-4;
 error = 1; 
 licznik=0; 
 
@@ -46,7 +46,11 @@ U(:,1) = U4;
 U(:,n+2) = U2;
 
 Uk=U;
-mR = max(n,m);
+if xb-xa > yd-yc
+  mR = n;
+else
+  mR = m;
+end
 R = createR(mR+1);
 lR = length(R); 
 while error>tol

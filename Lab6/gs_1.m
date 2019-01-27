@@ -6,10 +6,10 @@ tic
 %funkcja
 F = @(x,y) 0;
 
-%rozwi¹zanie analityczne
+%rozwiï¿½zanie analityczne
 G = @(x,y) log(x.^2+y.^2);
 
-%przedzia³ omega
+%przedziaï¿½ omega
 xa=1;
 xb=2;
 yc=0;

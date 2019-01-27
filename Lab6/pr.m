@@ -21,14 +21,14 @@ u3 = @(x) log(x.^2+1);
 u4 = @(y) log(y.^2+1);
 
 %siatka
-n=30;
+n=50;
 m=30;
 h=(xb-xa)/(n+1);
 k=(yd-yc)/(m+1);
 x=[xa:h:xb];
 y=[yc:k:yd];
 
-tol=1e-7;
+tol=1e-4;
 error = 1; 
 licznik=0; 
 
