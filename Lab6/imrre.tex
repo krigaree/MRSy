@@ -449,6 +449,19 @@ Liczba wykonanych iteracji $ = 84 $
 Czas wykonywania algorytmu $ = 0.227 s$
 
 \newpage
+\subsection{Metoda Peacemanna-Rachforda}
+Jest to metoda dwupoziomowa niejawna. Charakteryzuje się tym, że kolejne przybliżenia otrzymujemy wykorzystując krok pośredni $n+\frac{1}{2}$.
+\\
+Przybliżenie w kroku pośrednim $n+\frac{1}{2}$ opisuje poniższe równanie
+$$-r u_{i-1,j}^{n+\frac{1}{2}} + (1+2r) u ^{n+\frac{1}{2}}_{i,j} - r u_{i+1,j}^{n+\frac{1}{2}} = u^n_{i,j} + r\left(u^n_{i,j+1} + u^n_{i,j-1} - 2u^n_{i,j} \right)$$
+Przybliżenie w kroku $n+1$ otrzymuje się w sposób analogiczny z tą różnicą, że powstały układ równań rozwiązuje się względem kolumn siatki, zamiast względem wierszy.
+\\\\
+Parametr r w powyższym równaniu definiuje się następująco:\\
+Niech $n-1$ oznacza liczbę węzłów wewnętrznych rozważanego wiersza lub kolumny oraz niech $\alpha = sin^2\left(\dfrac{\pi}{2n}\right)$. Wtedy k będzie określone jako najmniejsza dodatnia liczba dla której spełniona jest nierówność
+$$\left(\sqrt(2 - 1\right)^{2k} < \alpha$$
+, wtedy $$r_i = \alpha^{\dfrac{1+i}{2k}}$$, gdzie $i\in \{1,2,...,k\}$\\
+Z tak określonego zbioru parametrów $r_i$ w każdej iteracji wybieramy kolejny parametr w sposób cykliczny.
+\newpage
 \subsection{Zestawienie metod iteracyjnych}
 \begin{figure}[!ht]
 	\begin{center}

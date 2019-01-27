@@ -1,17 +1,17 @@
 function [Uv] = doStep (iter, r, f, x, y, U, step)
 if step %n-step -> n+1/2  
-  m = length(y);
+  m = length(x);
   fi = U(iter, 2:m-1) + r .* (U(iter+1, 2:m-1) + U(iter-1, 2:m-1) - 2*U(iter, 2:m-1));
   F = fi' .* diag(eye(m-2));
   F(1) = F(1) + r .* U(iter, 1);
-  F(m-2) = F(m-2) + r .* U(iter, m);
+  F(length(F)) = F(length(F)) + r .* U(iter, m);
   U(iter, m-2);
 else %n+1/2-step -> n   
-  m = length(x);
+  m = length(y);
   fi = U(2:m-1, iter) + r .* (U(2:m-1,iter+1) + U(2:m-1,iter-1) - 2*U(2:m-1,iter));
   F = fi .* diag(eye(m-2));
   F(1) = F(1) + r .* U(1, iter);
-  F(m-2) = F(m-2) + r .* U(m, iter);
+  F(length(F)) = F(length(F)) + r .* U(m, iter);
   U(m-2, iter);
 end
 m = m-2; %delete x0 xm+1
