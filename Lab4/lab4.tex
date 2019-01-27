@@ -14,9 +14,13 @@ Rozważając najbardziej ogólne zagadnienie brzegowe rzędu II z warunkami brze
 \]
 , gdzie:
 $x\in[a,b]$
-\\
-\\
-Okazuje się że stosowanie schematów na pochodną różnego rzędu o tej samej dokładności skutkuje tym, że cała metoda jest również rzędu II.
+
+$a(x), b(x), c(x), f(x)$ są znanymi funkcjami
+\newline
+$u = u(x)$ jest poszukiwanym rozwiązaniem
+\newline
+
+Stosowanie schematów na pochodną różnego rzędu (I oraz II) o tej samej dokładności skutkuje tym, że cała metoda jest rzędu II.
 
 \subsection{Cel ćwiczenia}
 Na laboratorium otrzymaliśmy następujące równania dla których mieliśmy stworzyć rozwiązujący je algorytm.
@@ -72,7 +76,7 @@ Rozwiązanie analityczne: $\widetilde{u}(x) = x^2 - x$
 Ponadto zaprezentujemy wykres porównujący rozwiązanie numeryczne z rozwiązaniem analitycznym, a także wykres błędu $||E||_{\infty}$ w zależności od liczby obranych węzłów (n).
 %\begin{samepage}
 \newpage
-\subsubsection{Rozwiązanie}
+\subsection{Rozwiązanie}
 %\textbf{Warunek brzegowy Dirichleta (I rodzaju)}
 Poniżej przedstawiony został algorytm rozwiązania powyższych równań z przykładowymi danymi wejściowymi z podpunktu a).
 
@@ -333,7 +337,6 @@ c)\\
 \end{samepage} 
 
 \begin{samepage}
-	Błąd metody w zależności od liczby węzłów:
 	\begin{figure}[!ht]
 		\begin{center}
 			\includegraphics[width=0.8\textwidth]{Lab4/charts/zad3/error.png}
@@ -358,7 +361,11 @@ c)\\
 \]
 , gdzie:
 $x\in[a,b]$
-\\
+
+$a(x), b(x), c(x), f(x)$ są znanymi funkcjami
+
+$u = u(x)$ jest poszukiwanym rozwiązaniem
+\newline
 
 \subsection{Cel ćwiczenia}
 Kolejnym zadaniem było stworzenie algorytmów rozwiązujących zagadnienia brzegowe II rzędu z warunkami brzegowymi typu Neumanna.
@@ -383,6 +390,7 @@ Do rozwiązania zostało podane następujące zagadnienie:
 , gdzie:
 
 $x\in [0,1]$
+\\
 \\
 Rozwiązanie analityczne: $\widetilde{u}(x) = (x+1)e^x$
 
@@ -666,6 +674,8 @@ c)\\
 	\end{figure}
 	\FloatBarrier
 \end{samepage} 
+
+\newpage
 
 
 
