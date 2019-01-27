@@ -22,7 +22,7 @@ u4 = @(y) log(y.^2+1);
 
 %siatka
 n=50;
-m=30;
+m=50;
 h=(xb-xa)/(n+1);
 k=(yd-yc)/(m+1);
 x=[xa:h:xb];

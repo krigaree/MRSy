@@ -32,8 +32,15 @@ psi(1,:) = u3(x);
 psi(:,1) = u1(t);
 psi(:,m) = u2(t);
 
-% Skopiowanie warunku początkowego na drugi poziom
-psi(2,:) = psi(1,:);
+% Pierwszy poziom za pomocą schematu dwupoziomowego
+A_2 = (2+(deltax^2)/(deltat))*diag(eye(m-2));
+B_2 = diag(A_2) + -1*diag(diag(eye(m-3)),-1) + -1*diag(diag(eye(m-3)),1);
+F = diag(eye(m-2)) * deltax^2/deltat .* psi(1,2:m-1)';
+F(1) = F(1) + psi(2,1);
+F(length(F)) = F(length(F)) + psi(2, m);  
+psi(2,2:m-1) = linsolve(B_2,F);
+
+% Pozostałe poziomy
 F = diag(eye(2*m-2));
 A1 = eye(m-2) .* -(D/deltax^2-1/(2*deltat));
 A2 = (eye(m-2,m) + diag(diag(eye(m-2)),2)(1:m-2,:)) .* D/deltax^2;

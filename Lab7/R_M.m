@@ -33,6 +33,7 @@ psi(1,:) = u3(x);
 psi(:,1) = u1(t);
 psi(:,m) = u2(t);
 
+% Skopiowanie warunku początkowego na drugi poziom
 psi(2,:) = psi(1,:);
 F = diag(eye(m-2));
 alfa = D * deltat / deltax^2;

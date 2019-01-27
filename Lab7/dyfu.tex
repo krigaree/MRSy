@@ -120,6 +120,89 @@ Liczba wykonanych iteracji $ = 4205 $
 Czas wykonywania algorytmu $ = 0.472 s$
 \newpage
 \subsection{Schemat BTCS}
+BTCS (ang. Backward Time Central Space) czyli schemat "w tył":
 
+$$\dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2}$$
 
+Dla lewej strony równania zastosujemy schemat "w tył", natomiast dla prawej schemat centralny.
 
+Mamy więc:
+
+$$\dfrac{\psi^{(n+1)}_{i}-\psi^n_{i}}{\Delta t}=D\dfrac{\psi^{n}_{i+1}-2\psi^n_{i}+\psi^n_{i-1}}{\Delta x^2}$$
+
+Stąd:
+
+$$-\psi^{(n+1)}_{i+1} + \left(2+\dfrac{\Delta x^2}{D \Delta t}\right) \psi^{(n+1)}_{i} -\psi^{(n+1)}_{i-1} =\dfrac{\Delta x^2}{D\Delta t}\psi^{n}_{i}$$
+
+Jest to schemat jawny, bezwzględnie stabilny. 
+
+Z powyższego równania otrzymujemy liniowy układ równań algebraicznych, a więc w każdej iteracji czasowej należy rozwiązać pewien układ równań liniowych.
+\newpage
+\subsubsection{Algorytm}
+\input{Lab7/btcs}
+\newpage
+\subsubsection{Wykresy}
+
+\newpage
+\subsection{Schemat CTCS}
+%TODO
+\newpage
+\subsubsection{Algorytm}
+%\input{Lab7/ctcs}
+\newpage
+\subsubsection{Wykresy}
+\newpage
+\subsection{Schemat DuForta-Frankle}
+Schemat DuForta-Frankle dla równań dyfuzyjnych postaci:
+
+$$\dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2}$$
+
+Dla obu stron powyższego równania stosuje się schemat centralny.
+
+Mamy więc:
+
+$$\dfrac{\psi^{(n+1)}_{i}-\psi^{n-1}_{i}}{2\Delta t}=D\dfrac{\psi^{n}_{i+1}- \left( \psi^{(n+1)}_{i} + \psi^{(n-1)}_{i} \right)+\psi^n_{i-1}}{\Delta x^2}$$
+
+Stąd:
+
+$$\psi^{(n+1)}_{i} \left(\dfrac{1}{2 \Delta t} + \dfrac{D}{\Delta x^2}\right)= \dfrac{D}{\Delta x^2} \left( \psi^{n}_{i+1} + \psi^{n}_{i-1} \right) - \psi^{(n-1)}_{i} \left( \dfrac{D}{\Delta x^2} + \dfrac{1}{2\Delta t} \right) $$
+
+Jest to schemat jawny, bezwzględnie stabilny. 
+
+Wadą tej metody jest powstawanie oscylacyjnych rozwiązań dla dużych kroków czasowych, co wpływa na jakość rozwiązania.
+
+Jest to schemat trójpoziomowy, a więc przedstawimy dwa sposoby rozwiązania tego problemu:
+\begin{itemize}
+	\item skopiujemy warunek początkowy na dwa poziomy
+	\item I poziom nieznany zbudujemy za pomocą schematu dwupoziomowego
+\end{itemize}
+
+\newpage
+\subsubsection{Algorytm}
+a)
+\input{Lab7/d_f}
+\newpage
+b)
+%\input{Lab7/d_f_2}
+\newpage
+\subsubsection{Wykresy}
+\newpage
+\subsection{Schemat Cranka-Nicolson}
+%TODO
+\newpage
+\subsubsection{Algorytm}
+%\input{Lab7/c_n}
+\newpage
+\subsubsection{Wykresy}
+\newpage
+\subsection{Schemat Richtmyera-Morton}
+\newpage
+\subsubsection{Algorytm}
+a)
+\input{Lab7/R_M}
+\newpage
+b)
+\input{Lab7/R_M_B}
+\newpage
+\subsubsection{Wykresy}
+\newpage
