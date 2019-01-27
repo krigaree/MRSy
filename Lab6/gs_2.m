@@ -6,10 +6,10 @@ tic
 %funkcja
 F = @(x,y) -cos(x+y)-cos(x-y);
 
-%rozwi¹zanie analityczne
+%rozwiï¿½zanie analityczne
 G = @(x,y) cos(x).*cos(y);
 
-%przedzia³ omega
+%przedziaï¿½ omega
 xa=0;
 xb=pi;
 yc=0;
