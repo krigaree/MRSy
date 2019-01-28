@@ -2,7 +2,7 @@ clear, clc;
 tic
 % zad 2
 % Przykładowe dane
-nx = 5; ny = 50; xa = 0; xb = 2; ya = 0; yb = 1;
+nx = 10; ny = 50; xa = 0; xb = 2; ya = 0; yb = 1;
 f = @(x, y) (x.^2 + y.^2) .* exp(x.*y);
 g = @(x, y) exp(x.*y);
 uxa = @(x) 1;         %u1

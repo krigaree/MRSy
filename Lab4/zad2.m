@@ -13,7 +13,7 @@ n = input('Podaj liczbe wezlow: ');
 h = (b-a)/(n+1);
 x = linspace((a+h),(b-h),n);
 #obliczenia
-a1 = (-2 .* ax(x) + cx(x) .*h^2) .* diag(eye(n));
+a1 = (-2 .* ax(x) + cx(x) .*h^2)' .* diag(eye(n));
 A1 = diag(a1);
 a2 = (ax(x(2:n)) -1/2 .* bx(x(2:n)) .*h)' .* diag(eye(n-1));
 A2 = diag(a2, -1);

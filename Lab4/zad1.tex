@@ -16,7 +16,7 @@
 \NormalTok{h = c/(n+}\FloatTok{1}\NormalTok{);}
 \NormalTok{x = }\FunctionTok{linspace}\NormalTok{((a+h),(b-h),n);}
 \CommentTok{# Obliczenia}
-\NormalTok{a1 = (-}\FloatTok{2} \NormalTok{.* ax(x) + cx(x) .*h^}\FloatTok{2}\NormalTok{) .* }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n));}
+\NormalTok{a1 = (-}\FloatTok{2} \NormalTok{.* ax(x) + cx(x) .*h^}\FloatTok{2}\NormalTok{)' .* }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n));}
 \NormalTok{A1 = }\FunctionTok{diag}\NormalTok{(a1);}
 \NormalTok{a2 = (ax(x(}\FloatTok{2}\NormalTok{:n)) -}\FloatTok{1}\NormalTok{/}\FloatTok{2} \NormalTok{.* bx(x(}\FloatTok{2}\NormalTok{:n)) .*h)' .* }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(n-}\FloatTok{1}\NormalTok{));}
 \NormalTok{A2 = }\FunctionTok{diag}\NormalTok{(a2, -}\FloatTok{1}\NormalTok{);}
