@@ -22,7 +22,7 @@ war3 = @(x) 0;
 war4 = @(y) cos(y);
 
 %siatka
-n=55;
+n=5;
 m=(yd-yc)/(xb-xa)*(n+1)-1;
 
 h=(xb-xa)/(n-1);

@@ -2,7 +2,7 @@ clear, clc;
 tic
 % zad 1
 % Przykładowe dane
-nx = 15; ny = 15; xa = 0; xb = 1; ya = 0; yb = 1;
+nx = 50; ny = 5; xa = 0; xb = 1; ya = 0; yb = 1;
 f = @(x, y) 0;
 g = @(x, y) x.*y;
 uxa = @(x) 0; %u1
@@ -11,7 +11,7 @@ uya = @(y) 0; %u4
 uyb = @(y) y; %u2
 
 % Obliczenia
-h = (xb-xa)/(nx+1);
+h = (xb-xa)/(nx+1)
 k = (yb-ya)/(ny+1);
 xM = linspace(xa + h, xb - h, nx);
 yM  = linspace(ya+k, yb-k, ny);
@@ -39,7 +39,7 @@ XM = [xa xM xb];
 G = g(X,Y);
 U = [uxa(XM)' .* diag(eye(nx+2)), U', uxb(XM)' .* diag(eye(nx+2))]';
 % Błąd
-Error = max(max(abs(G-U)));
+Error = max(max(abs(G-U)))
 % Wykres
 subplot(1,2,1)
 surf(X,Y,U)

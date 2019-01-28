@@ -16,7 +16,7 @@ u3 = @(x,t) sin(pi*x/2);
 
 licznik=0;
 %siatka
-m=20;
+m=30;
 D=1;
 deltax=(xb-xa)/(m-1);
 x=[xa:deltax:xb];         %przedzia� przestrzenny

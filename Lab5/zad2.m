@@ -2,7 +2,7 @@ clear, clc;
 tic
 % zad 2
 % Przykładowe dane
-nx = 100; ny = 100; xa = 0; xb = 2; ya = 0; yb = 1;
+nx = 5; ny = 50; xa = 0; xb = 2; ya = 0; yb = 1;
 f = @(x, y) (x.^2 + y.^2) .* exp(x.*y);
 g = @(x, y) exp(x.*y);
 uxa = @(x) 1;         %u1
@@ -39,7 +39,7 @@ XM = [xa xM xb];
 G = g(X,Y);
 U = [uxa(XM)' .* diag(eye(nx+2)), U', uxb(XM)' .* diag(eye(nx+2))]';
 % Błąd
-Error = max(max(abs(G-U)));
+Error = max(max(abs(G-U)))
 % Wykres
 subplot(1,2,1)
 surf(X,Y,U)

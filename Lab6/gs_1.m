@@ -22,7 +22,7 @@ war3 = @(x) log(x.^2+1);
 war4 = @(y) log(y.^2+1);
 
 %siatka
-n=50;
+n=100;
 m=n;
 
 h=(xb-xa)/(n-1);

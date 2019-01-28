@@ -2,7 +2,7 @@ clear, clc;
 tic
 % zad 3
 % Przykładowe dane
-nx = 100; ny = 100; xa = 1; xb = 2; ya = 1; yb = 2;
+nx = 5; ny = 50; xa = 1; xb = 2; ya = 1; yb = 2;
 f = @(x, y) x ./ y + y ./ x;
 g = @(x, y) x .* y .* log(x .* y);
 uxa = @(x) x .* log(x); %u1
