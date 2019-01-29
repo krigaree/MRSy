@@ -22,8 +22,8 @@ u3 = @(x) 0;
 u4 = @(y) cos(y);
 
 %siatka
-n=50;
-m=n;
+n=150;
+m=150;
 h=(xb-xa)/(n+1);
 k=(yd-yc)/(m+1);
 x=[xa:h:xb];
