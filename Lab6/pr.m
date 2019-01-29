@@ -1,4 +1,5 @@
-%metoda Jacobiego
+%metoda Peacemanna-Rachforda
+tic
 clc
 clear all
 
@@ -22,7 +23,7 @@ u4 = @(y) log(y.^2+1);
 
 %siatka
 n=50;
-m=50;
+m=n;
 h=(xb-xa)/(n+1);
 k=(yd-yc)/(m+1);
 x=[xa:h:xb];
@@ -85,6 +86,5 @@ title('Metoda Numeryczna')
 subplot(1,2,2)
 surf(X,Y,(G(X,Y)))
 title('Metoda Analityczna')
-
-blad = max(max(abs(U-G(X,Y))))
 licznik
+toc

@@ -22,7 +22,7 @@ war3 = @(x) log(x.^2+1);
 war4 = @(y) log(y.^2+1);
 
 %siatka
-n=50;
+n=5;
 m=n;
 
 h=(xb-xa)/(n-1);
@@ -61,6 +61,7 @@ while error>tol
     licznik = licznik+1;
     
 end
+
 toc
 %wykresy
 [X,Y] = meshgrid(x,y);
@@ -70,6 +71,6 @@ title('Metoda Numeryczna')
 subplot(1,2,2)
 surf(X,Y,(G(X,Y)))
 title('Metoda Analityczna')
-
+Error=max(max(abs(M0-G(X,Y))))
 licznik
 

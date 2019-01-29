@@ -64,7 +64,7 @@ Jedna pełna iteracja polega na poprawieniu jeden raz wartości przybliżonych w
 Dobór punktów nie ma znaczenia, ważne jest jedynie aby w kolejnych iteracjach zachować obrany porządek.
 
 Zaletą metody Jacobiego jest nie generowanie wielkich macierzy; wadą dość wolna zbieżność.
-
+\newpage
 Dowolne pierwsze przybliżenie:
 
 $$u_{i,j}^{(n)} = \frac{1}{4}(u_{i+1,j}^{(n)} + u_{i-1,j}^{(n)} + u_{i,j+1}^{(n)} + u_{i,j-1}^{(n)}) - \frac{1}{4}h^2f_{i,j}$$
@@ -462,6 +462,119 @@ $$\left(\sqrt(2 - 1\right)^{2k} < \alpha$$
 , wtedy $$r_i = \alpha^{\dfrac{1+i}{2k}}$$, gdzie $i\in \{1,2,...,k\}$\\
 Z tak określonego zbioru parametrów $r_i$ w każdej iteracji wybieramy kolejny parametr w sposób cykliczny.
 \newpage
+\subsubsection{Algorytm}
+
+\newpage
+\subsubsection{Wykresy}
+
+a)
+
+Dla n = 5:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.78\textwidth]{Lab6/charts/pr/zad1/5.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 8 $
+
+Czas wykonywania algorytmu $ = 0.123 s$
+
+
+Dla n = 15:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.78\textwidth]{Lab6/charts/pr/zad1/15.png}
+	\end{center}
+\end{figure}
+
+
+Liczba wykonanych iteracji $ = 19 $
+
+Czas wykonywania algorytmu $ = 0.138 s$
+\newpage
+Dla n = 30:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/pr/zad1/30.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 37 $
+
+Czas wykonywania algorytmu $ = 0.212 s$
+
+
+
+Dla n = 50:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/pr/zad1/50.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 57 $
+
+Czas wykonywania algorytmu $ = 0.456 s$
+\newpage
+b)
+
+Dla n = 5:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/pr/zad2/5.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 14 $
+
+Czas wykonywania algorytmu $ = 0.150 s$
+
+Dla n = 15:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/pr/zad2/15.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 26 $
+
+Czas wykonywania algorytmu $ = 0.143 s$
+
+Dla n = 30:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/pr/zad2/30.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 39 $
+
+Czas wykonywania algorytmu $ = 0.211 s$
+
+
+
+Dla n = 50:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab6/charts/pr/zad2/50.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 57 $
+
+Czas wykonywania algorytmu $ = 0.452 s$
+
+\newpage
+
 \subsection{Zestawienie metod iteracyjnych}
 \begin{figure}[!ht]
 	\begin{center}
