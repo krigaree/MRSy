@@ -1,0 +1,22 @@
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{function [Uv] = doStep (iter, r, x, y, U, }\FunctionTok{step}\NormalTok{)}
+\NormalTok{if }\FunctionTok{step} \CommentTok{%n-step -> n+1/2  }
+\NormalTok{  m = }\FunctionTok{length}\NormalTok{(x);}
+\NormalTok{  fi = U(iter, }\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{) + r .* (U(iter+}\FloatTok{1}\NormalTok{, }\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{) + U(iter-}\FloatTok{1}\NormalTok{, }\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{) - }\FloatTok{2}\NormalTok{*U(iter, }\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{));}
+\NormalTok{  F = fi' .* }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{2}\NormalTok{));}
+\NormalTok{  F(}\FloatTok{1}\NormalTok{) = F(}\FloatTok{1}\NormalTok{) + r .* U(iter, }\FloatTok{1}\NormalTok{);}
+\NormalTok{  F(}\FunctionTok{length}\NormalTok{(F)) = F(}\FunctionTok{length}\NormalTok{(F)) + r .* U(iter, m);}
+\NormalTok{else }\CommentTok{%n+1/2-step -> n   }
+\NormalTok{  m = }\FunctionTok{length}\NormalTok{(y);}
+\NormalTok{  fi = U(}\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{, iter) + r .* (U(}\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{,iter+}\FloatTok{1}\NormalTok{) + U(}\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{,iter-}\FloatTok{1}\NormalTok{) - }\FloatTok{2}\NormalTok{*U(}\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{,iter));}
+\NormalTok{  F = fi .* }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{2}\NormalTok{));}
+\NormalTok{  F(}\FloatTok{1}\NormalTok{) = F(}\FloatTok{1}\NormalTok{) + r .* U(}\FloatTok{1}\NormalTok{, iter);}
+\NormalTok{  F(}\FunctionTok{length}\NormalTok{(F)) = F(}\FunctionTok{length}\NormalTok{(F)) + r .* U(m, iter);}
+\NormalTok{end}
+\NormalTok{m = m-}\FloatTok{2}\NormalTok{; }\CommentTok{%delete x0 xm+1}
+\NormalTok{A = (}\FloatTok{1}\NormalTok{+}\FloatTok{2}\NormalTok{*r).*}\FunctionTok{eye}\NormalTok{(m) + }\FunctionTok{diag}\NormalTok{(-r*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{1}\NormalTok{)),-}\FloatTok{1}\NormalTok{) + }\FunctionTok{diag}\NormalTok{(-r*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{1}\NormalTok{)),}\FloatTok{1}\NormalTok{);}
+\NormalTok{Uv = linsolve(A,F);}
+\NormalTok{end}
+\end{Highlighting}
+\end{Shaded}

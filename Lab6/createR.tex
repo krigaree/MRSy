@@ -1,0 +1,13 @@
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{function [ r ] = createR( n )}
+\NormalTok{a = }\FunctionTok{sin}\NormalTok{(}\BaseNTok{pi}\NormalTok{/(}\FloatTok{2}\NormalTok{*n))^}\FloatTok{2}\NormalTok{;}
+\NormalTok{k = }\FloatTok{1}\NormalTok{/}\FloatTok{2}\NormalTok{ * }\FunctionTok{log}\NormalTok{(a)/}\FunctionTok{log}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(}\FloatTok{2}\NormalTok{)-}\FloatTok{1}\NormalTok{);}
+\NormalTok{k = }\FunctionTok{floor}\NormalTok{(k)+}\FloatTok{1}\NormalTok{;}
+\NormalTok{r = }\FunctionTok{zeros}\NormalTok{(}\FloatTok{1}\NormalTok{,k);}
+\NormalTok{for }\BaseNTok{i}\NormalTok{=}\FloatTok{1}\NormalTok{:k}
+\NormalTok{    r(}\BaseNTok{i}\NormalTok{) = a^((}\FloatTok{1}\NormalTok{-}\BaseNTok{i}\NormalTok{)/(}\FloatTok{2}\NormalTok{*k));}
+\NormalTok{end}
+\NormalTok{end}
+\end{Highlighting}
+\end{Shaded}
