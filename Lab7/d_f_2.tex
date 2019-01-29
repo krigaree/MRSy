@@ -24,9 +24,14 @@
 \FunctionTok{psi}\NormalTok{(}\FloatTok{1}\NormalTok{,:) = u3(x);}
 \FunctionTok{psi}\NormalTok{(:,}\FloatTok{1}\NormalTok{) = u1(t);}
 \FunctionTok{psi}\NormalTok{(:,m) = u2(t);}
-\CommentTok{%skopiowanie warunku początkowego na drugi poziom}
-\FunctionTok{psi}\NormalTok{(}\FloatTok{2}\NormalTok{,:) = }\FunctionTok{psi}\NormalTok{(}\FloatTok{1}\NormalTok{,:);}
-\CommentTok{%Pozostałe poziomy}
+\CommentTok{% Pierwszy poziom za pomocą schematu dwupoziomowego}
+\NormalTok{A_2 = (}\FloatTok{2}\NormalTok{+(deltax^}\FloatTok{2}\NormalTok{)/(deltat))*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{2}\NormalTok{));}
+\NormalTok{B_2 = }\FunctionTok{diag}\NormalTok{(A_2) + -}\FloatTok{1}\NormalTok{*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{3}\NormalTok{)),-}\FloatTok{1}\NormalTok{) + -}\FloatTok{1}\NormalTok{*}\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{3}\NormalTok{)),}\FloatTok{1}\NormalTok{);}
+\NormalTok{F = }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{2}\NormalTok{)) * deltax^}\FloatTok{2}\NormalTok{/deltat .* }\FunctionTok{psi}\NormalTok{(}\FloatTok{1}\NormalTok{,}\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{)';}
+\NormalTok{F(}\FloatTok{1}\NormalTok{) = F(}\FloatTok{1}\NormalTok{) + }\FunctionTok{psi}\NormalTok{(}\FloatTok{2}\NormalTok{,}\FloatTok{1}\NormalTok{);}
+\NormalTok{F(}\FunctionTok{length}\NormalTok{(F)) = F(}\FunctionTok{length}\NormalTok{(F)) + }\FunctionTok{psi}\NormalTok{(}\FloatTok{2}\NormalTok{, m);  }
+\FunctionTok{psi}\NormalTok{(}\FloatTok{2}\NormalTok{,}\FloatTok{2}\NormalTok{:m-}\FloatTok{1}\NormalTok{) = linsolve(B_2,F);}
+\CommentTok{% Pozostałe poziomy}
 \NormalTok{F = }\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(}\FloatTok{2}\NormalTok{*m-}\FloatTok{2}\NormalTok{));}
 \NormalTok{A1 = }\FunctionTok{eye}\NormalTok{(m-}\FloatTok{2}\NormalTok{) .* -(D/deltax^}\FloatTok{2}\NormalTok{-}\FloatTok{1}\NormalTok{/(}\FloatTok{2}\NormalTok{*deltat));}
 \NormalTok{A2 = (}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{2}\NormalTok{,m) + }\FunctionTok{diag}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{eye}\NormalTok{(m-}\FloatTok{2}\NormalTok{)),}\FloatTok{2}\NormalTok{)(}\FloatTok{1}\NormalTok{:m-}\FloatTok{2}\NormalTok{,:)) .* D/deltax^}\FloatTok{2}\NormalTok{;}
