@@ -4,28 +4,28 @@ clear all
 tic
 
 %funkcja
-F = @(x,y) 0;
+F = @(x,y) -cos(x+y)-cos(x-y);
 
-%rozwi¹zanie analityczne
-G = @(x,y) log(x.^2+y.^2);
+%rozwi�zanie analityczne
+G = @(x,y) cos(x).*cos(y);
 
-%przedzia³ omega
-xa=1;
-xb=2;
+%przedzia� omega
+xa=0;
+xb=pi;
 yc=0;
-yd=1;
+yd=pi/2;
 
 %warunki brzegowe
-war1 = @(x) 2*log(x);
-war2 = @(y) log(y.^2+4);
-war3 = @(x) log(x.^2+1);
-war4 = @(y) log(y.^2+1);
+war1 = @(x) cos(x);
+war2 = @(y) -cos(y);
+war3 = @(x) 0;
+war4 = @(y) cos(y);
 
 %siatka
-n=25;
-m=25;
+n=5;
+m=(yd-yc)/(xb-xa)*(n+1)-1;
 
-h=(xb-xa)/(n-1);
+h=(xb-xa)/(n+1);
 x=linspace(xa,xb,n+2);
 y=linspace(yc,yd,m+2);
 
@@ -52,7 +52,9 @@ end
 while error>tol
     for i=2:m+1
         for j=2:n+1
-            M(i-1,j-1) =0.25*(M0(i+1,j)+M0(i-1,j)+M0(i,j+1)+M0(i,j-1))-0.25*h^2*F(x(j),y(i));
+            M(i-1,j-1) = (1/h^2*(M0(i+1,j)+M0(i-1,j))+1/k^2*(M0(i,j+1)+M0(i,j-1)));
+            M(i-1,j-1) = M(i-1,j-1) - F(x(j),y(i));
+            M(i-1,j-1) = M(i-1,j-1)/(2*(1/h^2 + 1/k^2));
         end
     end
     
@@ -62,7 +64,6 @@ while error>tol
     
 end
 
-toc
 %wykresy
 [X,Y] = meshgrid(x,y);
 subplot(1,2,1)
@@ -71,6 +72,6 @@ title('Metoda Numeryczna')
 subplot(1,2,2)
 surf(X,Y,(G(X,Y)))
 title('Metoda Analityczna')
-Error=max(max(abs(M0-G(X,Y))))
-licznik
 
+licznik
+toc

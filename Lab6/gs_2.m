@@ -22,10 +22,10 @@ war3 = @(x) 0;
 war4 = @(y) cos(y);
 
 %siatka
-n=5;
+n=50;
 m=(yd-yc)/(xb-xa)*(n+1)-1;
 
-h=(xb-xa)/(n-1);
+h=(xb-xa)/(n+1);
 x=linspace(xa,xb,n+2);
 y=linspace(yc,yd,m+2);
 
