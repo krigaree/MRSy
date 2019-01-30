@@ -33,7 +33,7 @@ end
                         
 for n=2:n_end
   for i=2:m-1
-    psi(n,i)=(deltat/deltax^2)*(psi(n-1,i+1)-2*psi(n-1,i)+psi(n-1,i-1))+psi(n-1,i);
+    psi(n,i)=((D*deltat)/deltax^2)*(psi(n-1,i+1)-2*psi(n-1,i)+psi(n-1,i-1))+psi(n-1,i);
   end
   licznik = licznik+1;
 end
@@ -45,5 +45,6 @@ title('Metoda Numeryczna')
 subplot(1,2,2)
 surf(X,T,(G(X,T)))
 title('Metoda Analityczna')
+Error=max(max(abs(psi-G(X,T))))
 licznik
 toc

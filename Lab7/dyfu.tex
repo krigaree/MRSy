@@ -15,6 +15,20 @@ Będziemy korzystać z równania:
 \end{cases}
 \]
 
+Przyjmujemy następującą konwencję oznaczeń:
+
+\fontsize{14}{2}
+
+$$\psi_{(x_i,t_n)} = \psi^{n}_{i}$$
+
+\fontsize{11}{1}
+
+, gdzie:
+
+n - czas
+
+i - przestrzeń
+
 \subsection{Cel ćwiczenia}
 
 Naszym zadaniem było stworzenie algorytmu rozwiązującego następujące równanie:
@@ -62,7 +76,7 @@ Jest to schemat jawny, warunkowo stabilny, a więc parametry siatki muszą zosta
 Warunkiem stabilności dla takiego zadania jest następująca relcja:
 
 $$\dfrac{D\Delta t}{\Delta x^2}\le \dfrac{1}{2}$$
-\newpage
+
 \subsubsection{Algorytm}
 
 \input{Lab7/ftcs}
@@ -89,7 +103,7 @@ Dla n = 15:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = 405 $
+Liczba wykonanych iteracji $ = 980 $
 
 Czas wykonywania algorytmu $ = 0.163 s$
 
@@ -106,6 +120,31 @@ Dla n = 30:
 Liczba wykonanych iteracji $ = 4205 $
 
 Czas wykonywania algorytmu $ = 0.472 s$
+
+\newpage
+
+Jeżeli warunek stabilności nie zostanie spełniony:
+
+Dla:
+
+$$\dfrac{D\Delta t}{\Delta x^2} = \dfrac{1}{2}$$
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.78\textwidth]{Lab7/charts/ftcs/oscylowanko05.png}
+	\end{center}
+\end{figure}
+
+Dla:
+
+$$\dfrac{D\Delta t}{\Delta x^2} = \dfrac{6}{10}$$
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.78\textwidth]{Lab7/charts/ftcs/oscylowanko06.png}
+	\end{center}
+\end{figure}
+
 \newpage
 \subsection{Schemat BTCS}
 BTCS (ang. Backward Time Central Space) czyli schemat "w tył":
@@ -116,7 +155,7 @@ Dla lewej strony równania zastosujemy schemat "w tył", natomiast dla prawej sc
 
 Mamy więc:
 
-$$\dfrac{\psi^{(n+1)}_{i}-\psi^n_{i}}{\Delta t}=D\dfrac{\psi^{n}_{i+1}-2\psi^n_{i}+\psi^n_{i-1}}{\Delta x^2}$$
+$$\dfrac{\psi^{(n+1)}_{i}-\psi^n_{i}}{\Delta t}=D\dfrac{\psi^{n}_{i+1}-2\psi^n_{i}+\psi^n_{i-1}}{\Delta x^2} + O(\Delta t)+O(\Delta x^2)$$
 
 Stąd:
 
@@ -172,12 +211,63 @@ Czas wykonywania algorytmu $ = 0.254 s$
 
 \newpage
 \subsection{Schemat Cranka-Nicolson}
-%TODO
-\newpage
+
+$$\dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2}$$
+
+Dla lewej strony równania zastosujemy schemat centralny na poziomie (n+$\frac{1}{2}$), natomiast dla prawej weźmiemy średnią argumentów schematów centralnych na poziomach n i n+1.
+
+Mamy więc:
+
+$$\dfrac{\psi^{(n+1)}_{i}-\psi^n_{i}}{\Delta t}=\dfrac{D}{2}\Bigg(\dfrac{\psi^{n+1}_{i+1}-2\psi^{n+1}_{i}+\psi^{n+1}_{i-1}}{\Delta x^2} + \dfrac{\psi^{n}_{i+1}-2\psi^{n}_{i}+\psi^{n}_{i-1}}{\Delta x^2}\Bigg) + O(\Delta t^2) + O(\Delta x^2) $$
+
+, dalej:
+
+$$-\alpha\psi^{n+1}_{i-1}+(2\alpha+1)\psi^{n+1}_{i}-\alpha\psi^{n+1}_{i+1}=\alpha(\psi^{n}_{i+1}-2\psi^{n}_{i}+\psi^{n}_{i-1})+\psi^{n}_{i}$$
+
+Jest to schemat niejawny, bezwzględnie stabilny, a także jest schematem zachowawczym.
+
 \subsubsection{Algorytm}
 \input{Lab7/cn}
-\newpage
 \subsubsection{Wykresy}
+
+Dla n = 5:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.78\textwidth]{Lab7/charts/cn/5.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 6 $
+
+Czas wykonywania algorytmu $ = 0.107 s$
+
+\newpage
+
+Dla n = 15:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.78\textwidth]{Lab7/charts/cn/15.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 16 $
+
+Czas wykonywania algorytmu $ = 0.108 s$
+
+Dla n = 30:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.78\textwidth]{Lab7/charts/cn/30.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 31 $
+
+Czas wykonywania algorytmu $ = 0.112 s$
+
 \newpage
 \subsection{Schemat DuForta-Frankle}
 Schemat DuForta-Frankle dla równań dyfuzyjnych postaci:
@@ -188,7 +278,7 @@ Dla obu stron powyższego równania stosuje się schemat centralny.
 
 Mamy więc:
 
-$$\dfrac{\psi^{(n+1)}_{i}-\psi^{n-1}_{i}}{2\Delta t}=D\dfrac{\psi^{n}_{i+1}- \left( \psi^{(n+1)}_{i} + \psi^{(n-1)}_{i} \right)+\psi^n_{i-1}}{\Delta x^2}$$
+$$\dfrac{\psi^{(n+1)}_{i}-\psi^{n-1}_{i}}{2\Delta t}=D\dfrac{\psi^{n}_{i+1}- \left( \psi^{(n+1)}_{i} + \psi^{(n-1)}_{i} \right)+\psi^n_{i-1}}{\Delta x^2} + O(\Delta t^2) + O(\Delta x^2) +  O\Big(\dfrac{\Delta t}{\Delta x}\Big)^2$$
 
 Stąd:
 
@@ -215,7 +305,30 @@ Jest to schemat trójpoziomowy, a więc przedstawimy dwa sposoby rozwiązania te
 \subsubsection{Wykresy}
 \newpage
 \subsection{Schemat Richtmyera-Morton}
-\newpage
+
+Niejawna metoda trójpoziomowa, charakteryzująca się znakomitą dokładnością.
+
+$$\dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2}$$
+
+, mamy:
+
+$$(1+\Theta)\dfrac{\psi^{n+1}_{i}-\psi^n_{i}}{\Delta t}-\Theta\dfrac{\psi^{n}_{i}-\psi^{n-1}_{i}}{\Delta t} = D \dfrac{\psi^{n+1}_{i+1}-2\psi^{n+1}_{i}+\psi^{n+1}_{i-1}}{\Delta x^2} + O(\Delta t^2) + O(\Delta x^2) $$
+
+, oznaczmy:
+
+$$\dfrac{D\Delta t}{\Delta x^2} = \alpha$$
+
+, zwiększamy dokładność do  $O(\Delta t^2) + O(\Delta x^4)$ , niech:
+
+$$\Theta = \frac{1}{2} - \dfrac{\Delta x^2}{12D\Delta t}$$
+
+, po trywialnych przekształceniach:
+
+$$-\alpha\psi^{n+1}_{i-1}+(1+\Theta + 2\alpha)\psi^{n+1}_{i}-\alpha\psi^{n+1}_{i+1}=(1+2\Theta)\psi^{n}_{i} - \Theta\psi^{n-1}_{i}$$
+
+$$A\psi^{n+1}=\widetilde{\psi}^{n}+\widetilde{\psi}^{n-1}$$
+
+
 \subsubsection{Algorytm}
 1)
 \input{Lab7/R_M}
@@ -224,4 +337,39 @@ Jest to schemat trójpoziomowy, a więc przedstawimy dwa sposoby rozwiązania te
 \input{Lab7/R_M_B}
 \newpage
 \subsubsection{Wykresy}
-\newpage
+
+Dla n = 5:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab7/charts/rm/5.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 3 $
+
+Czas wykonywania algorytmu $ = 0.097 s$
+
+Dla n = 15:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab7/charts/rm/15.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 48 $
+
+Czas wykonywania algorytmu $ = 0.103 s$
+
+Dla n = 30:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{Lab7/charts/rm/30.png}
+	\end{center}
+\end{figure}
+
+Liczba wykonanych iteracji $ = 209 $
+
+Czas wykonywania algorytmu $ = 0.105 s$

@@ -15,7 +15,7 @@ ub2 = @(t) 0;
 up = @(x) sin(pi*x/2);
 
 %siatka
-n=10;
+n=30;
 
 h=(xb-xa)/(n+1);
 k=(yd-yc)/(n+1);
