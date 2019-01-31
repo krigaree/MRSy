@@ -16,7 +16,7 @@ u3 = @(x,t) sin(pi*x/2);
 
 licznik=0;
 %siatka
-m=40;
+m=30;
 D=1;
 deltax=(xb-xa)/(m-1);
 x=[xa:deltax:xb];         %przedzia� przestrzenny
@@ -43,8 +43,9 @@ psi(2,2:m-1) = linsolve(B_2,F);
 % Pozostałe poziomy
 F = diag(eye(2*m-2));
 A1 = eye(m-2) .* -(D/deltax^2-1/(2*deltat));
-A2 = (eye(m-2,m) + diag(diag(eye(m-2)),2)(1:m-2,:)) .* D/deltax^2;
-A = [A1, A2] ./ (1/(2*deltat) + D/deltax^2);
+A2 = diag(diag(eye(m-2)),2);
+A3 = (eye(m-2,m) + A2(1:m-2,:)) .* D/deltax^2;
+A = [A1, A3] ./ (1/(2*deltat) + D/deltax^2);
 for n=3:n_end
   F(1:m-2) = psi(n-2,2:m-1);
   F(m-1:length(F)) = psi(n-1,:);
