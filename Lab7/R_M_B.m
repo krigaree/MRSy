@@ -16,7 +16,7 @@ u3 = @(x,t) sin(pi*x/2);
 
 licznik=0;
 %siatka
-m=5;
+m=50;
 D=1;
 deltax=(xb-xa)/(m-1);
 x=[xa:deltax:xb];         %przedzia� przestrzenny
@@ -63,6 +63,6 @@ title('Metoda Numeryczna')
 subplot(1,2,2)
 surf(X,T,(G(X,T)))
 title('Metoda Analityczna')
-Error=max(max(abs(psi-G(X,T))));
-licznik
+Error=max(max(abs(psi-G(X,T))))
+licznik;
 toc
