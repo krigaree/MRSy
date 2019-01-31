@@ -17,7 +17,7 @@
 \NormalTok{n=}\FloatTok{35}\NormalTok{; m=n;}
 \NormalTok{lambda = }\FloatTok{0.25}\NormalTok{*(}\FunctionTok{cos}\NormalTok{(}\BaseNTok{pi}\NormalTok{/n)+}\FunctionTok{cos}\NormalTok{(}\BaseNTok{pi}\NormalTok{/m))^}\FloatTok{2}\NormalTok{;}
 \NormalTok{omega = }\FloatTok{1}\NormalTok{+(lambda/(}\FloatTok{1}\NormalTok{+}\FunctionTok{sqrt}\NormalTok{(}\FloatTok{1}\NormalTok{-lambda))^}\FloatTok{2}\NormalTok{);}
-\NormalTok{h=(xb-xa)/(n-}\FloatTok{1}\NormalTok{); x=}\FunctionTok{linspace}\NormalTok{(xa,xb,n+}\FloatTok{2}\NormalTok{); y=}\FunctionTok{linspace}\NormalTok{(yc,yd,m+}\FloatTok{2}\NormalTok{);}
+\NormalTok{h=(xb-xa)/(n+}\FloatTok{1}\NormalTok{); x=}\FunctionTok{linspace}\NormalTok{(xa,xb,n+}\FloatTok{2}\NormalTok{); y=}\FunctionTok{linspace}\NormalTok{(yc,yd,m+}\FloatTok{2}\NormalTok{);}
 \NormalTok{tol=}\FloatTok{1e-2}\NormalTok{; }\FunctionTok{error}\NormalTok{ = }\FloatTok{10}\NormalTok{; licznik=}\FloatTok{0}\NormalTok{; }
 \CommentTok{%tworzenie macierzy}
 \NormalTok{M0=}\FunctionTok{zeros}\NormalTok{(m,n)+}\FloatTok{1}\NormalTok{;}

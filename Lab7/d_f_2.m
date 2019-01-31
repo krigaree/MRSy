@@ -16,11 +16,11 @@ u3 = @(x,t) sin(pi*x/2);
 
 licznik=0;
 %siatka
-m=30;
+m=50;
 D=1;
 deltax=(xb-xa)/(m-1);
 x=[xa:deltax:xb];         %przedzia� przestrzenny
-deltat=(deltax^2)/(0.1*D); 
+deltat=(deltax^2)/(1*D); 
 n_end=floor(yd/deltat)+1;
 t=[0:deltat:1];           %przedzia� czasowy
 

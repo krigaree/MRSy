@@ -91,8 +91,6 @@ Dla n = 5:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = 80 $
-
 Czas wykonywania algorytmu $ = 0.102 s$
 
 Dla n = 15:
@@ -102,8 +100,6 @@ Dla n = 15:
 		\includegraphics[width=0.78\textwidth]{Lab7/charts/ftcs/15.png}
 	\end{center}
 \end{figure}
-
-Liczba wykonanych iteracji $ = 980 $
 
 Czas wykonywania algorytmu $ = 0.163 s$
 
@@ -117,11 +113,7 @@ Dla n = 30:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = 4205 $
-
 Czas wykonywania algorytmu $ = 0.472 s$
-
-\newpage
 
 Jeżeli warunek stabilności nie zostanie spełniony:
 
@@ -135,6 +127,8 @@ $$\dfrac{D\Delta t}{\Delta x^2} = \dfrac{1}{2}$$
 	\end{center}
 \end{figure}
 
+\newpage
+
 Dla:
 
 $$\dfrac{D\Delta t}{\Delta x^2} = \dfrac{6}{10}$$
@@ -145,7 +139,6 @@ $$\dfrac{D\Delta t}{\Delta x^2} = \dfrac{6}{10}$$
 	\end{center}
 \end{figure}
 
-\newpage
 \subsection{Schemat BTCS}
 BTCS (ang. Backward Time Central Space) czyli schemat "w tył":
 
@@ -178,8 +171,6 @@ Dla n = 5:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = 80 $
-
 Czas wykonywania algorytmu $ = 0.105 s$
 
 Dla n = 15:
@@ -189,8 +180,6 @@ Dla n = 15:
 		\includegraphics[width=0.78\textwidth]{Lab7/charts/btcs/15.png}
 	\end{center}
 \end{figure}
-
-Liczba wykonanych iteracji $ = 980 $
 
 Czas wykonywania algorytmu $ = 0.131 s$
 
@@ -204,12 +193,8 @@ Dla n = 30:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = 4205 $
-
 Czas wykonywania algorytmu $ = 0.254 s$
-\newpage
 
-\newpage
 \subsection{Schemat Cranka-Nicolson}
 
 $$\dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2}$$
@@ -226,8 +211,11 @@ $$-\alpha\psi^{n+1}_{i-1}+(2\alpha+1)\psi^{n+1}_{i}-\alpha\psi^{n+1}_{i+1}=\alph
 
 Jest to schemat niejawny, bezwzględnie stabilny, a także jest schematem zachowawczym.
 
+\newpage
+
 \subsubsection{Algorytm}
 \input{Lab7/cn}
+\newpage
 \subsubsection{Wykresy}
 
 Dla n = 5:
@@ -238,10 +226,8 @@ Dla n = 5:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = 6 $
-
 Czas wykonywania algorytmu $ = 0.107 s$
-\newpage
+
 Dla n = 15:
 
 \begin{figure}[!ht]
@@ -250,10 +236,8 @@ Dla n = 15:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = 16 $
-
 Czas wykonywania algorytmu $ = 0.108 s$
-\FloatBarrier
+\newpage
 Dla n = 30:
 
 \begin{figure}[!ht]
@@ -262,11 +246,8 @@ Dla n = 30:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = 31 $
-
 Czas wykonywania algorytmu $ = 0.112 s$
 
-\newpage
 \subsection{Schemat DuForta-Frankle}
 Schemat DuForta-Frankle dla równań dyfuzyjnych postaci:
 
@@ -311,9 +292,7 @@ Dla n = 5:
 	\end{center}
 \end{figure}
 
-%Liczba wykonanych iteracji $ = 19 $
-
-Czas wykonywania algorytmu $ = xxx s$
+Czas wykonywania algorytmu $ = 0.096 s$
 
 %\newpage
 
@@ -325,9 +304,7 @@ Dla n = 15:
 	\end{center}
 \end{figure}
 
-%Liczba wykonanych iteracji $ = 16 $
-
-Czas wykonywania algorytmu $ = 0.108 s$
+Czas wykonywania algorytmu $ = 0.099 s$
 \newpage
 Dla n = 30:
 
@@ -337,9 +314,7 @@ Dla n = 30:
 	\end{center}
 \end{figure}
 
-%Liczba wykonanych iteracji $ = 31 $
-
-Czas wykonywania algorytmu $ = 0.112 s$
+Czas wykonywania algorytmu $ = 0.113 s$
 
 Dla n = 30 oraz $\Delta t = 0.047562$:
 
@@ -348,6 +323,9 @@ Dla n = 30 oraz $\Delta t = 0.047562$:
 		\includegraphics[width=0.78\textwidth]{Lab7/charts/df/30_k.png}
 	\end{center}
 \end{figure}
+
+Czas wykonywania algorytmu $ = 0.095 s$
+
 \FloatBarrier
 \newpage
 2)\\
@@ -360,9 +338,7 @@ Dla n = 5:
 	\end{center}
 \end{figure}
 
-%Liczba wykonanych iteracji $ = 19 $
-
-Czas wykonywania algorytmu $ = xxx s$
+Czas wykonywania algorytmu $ = 0.101 s$
 
 Dla n = 15:
 
@@ -372,9 +348,7 @@ Dla n = 15:
 	\end{center}
 \end{figure}
 
-%Liczba wykonanych iteracji $ = 16 $
-
-Czas wykonywania algorytmu $ = 0.108 s$
+Czas wykonywania algorytmu $ = 0.103 s$
 \newpage
 Dla n = 30:
 
@@ -384,9 +358,7 @@ Dla n = 30:
 	\end{center}
 \end{figure}
 
-%Liczba wykonanych iteracji $ = 31 $
-
-Czas wykonywania algorytmu $ = 0.112 s$
+Czas wykonywania algorytmu $ = 0.117 s$
 
 Dla n = 30 oraz $\Delta t = 0.047562$:
 
@@ -396,6 +368,7 @@ Dla n = 30 oraz $\Delta t = 0.047562$:
 	\end{center}
 \end{figure}
 
+Czas wykonywania algorytmu $ = 0.098 s$
 
 \newpage
 \subsection{Schemat Richtmyera-Morton}
@@ -422,6 +395,7 @@ $$-\alpha\psi^{n+1}_{i-1}+(1+\Theta + 2\alpha)\psi^{n+1}_{i}-\alpha\psi^{n+1}_{i
 
 $$A\psi^{n+1}=\widetilde{\psi}^{n}+\widetilde{\psi}^{n-1}$$
 
+\newpage
 
 \subsubsection{Algorytm}
 1)
@@ -441,8 +415,6 @@ Dla n = 5:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = 3 $
-
 Czas wykonywania algorytmu $ = 0.097 s$
 
 Dla n = 15:
@@ -453,9 +425,9 @@ Dla n = 15:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = 48 $
-
 Czas wykonywania algorytmu $ = 0.103 s$
+
+\newpage
 
 Dla n = 30:
 
@@ -465,13 +437,11 @@ Dla n = 30:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = 209 $
-
 Czas wykonywania algorytmu $ = 0.105 s$
 
 2)
 
-Dla n = 5:
+Dla n = 20:
 
 \begin{figure}[!ht]
 	\begin{center}
@@ -479,11 +449,11 @@ Dla n = 5:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = x $
+Czas wykonywania algorytmu $ = 0.103s$
 
-Czas wykonywania algorytmu $ = xxx s$
+\newpage
 
-Dla n = 15:
+Dla n = 50:
 
 \begin{figure}[!ht]
 	\begin{center}
@@ -491,11 +461,9 @@ Dla n = 15:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = x $
+Czas wykonywania algorytmu $ = 0.131s$
 
-Czas wykonywania algorytmu $ = xxx s$
-
-Dla n = 30:
+Dla n = 100:
 
 \begin{figure}[!ht]
 	\begin{center}
@@ -503,6 +471,4 @@ Dla n = 30:
 	\end{center}
 \end{figure}
 
-Liczba wykonanych iteracji $ = x $
-
-Czas wykonywania algorytmu $ = xxx s$
+Czas wykonywania algorytmu $ = 0.433s$
