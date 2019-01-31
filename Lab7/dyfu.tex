@@ -5,7 +5,7 @@ Będziemy korzystać z równania:
 \[
 \begin{cases}
 \vspace{0.1cm} 
-\hspace{0,1cm} \dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2} \hspace{1cm}, \Omega = [0,L]x[0,\infty] \\
+\hspace{0,1cm} \dfrac{\partial \psi}{\partial t} = D\dfrac{\partial^2 \psi}{\partial x^2} \hspace{1cm}, \Omega = [0,L]x[0,\infty] \\
 \vspace{0.1cm}
 \hspace{0,1cm}\psi_{(x,t)}|_{x=0} = 0 \hspace{0.8cm},t>0 \\
 \vspace{0.1cm} 
@@ -36,7 +36,7 @@ Naszym zadaniem było stworzenie algorytmu rozwiązującego następujące równa
 \[
 \begin{cases}
 \vspace{0.1cm} 
-\hspace{0,1cm} \dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2} \\
+\hspace{0,1cm} \dfrac{\partial \psi}{\partial t} = D\dfrac{\partial^2 \psi}{\partial x^2} \\
 \vspace{0.1cm}
 \hspace{0,1cm}\psi|_{x=0} = 0 \\
 \vspace{0.1cm} 
@@ -59,7 +59,7 @@ $\psi_{analityczna}=\psi(x,t)=sin\Big(\dfrac{\pi x}{2}\Big)e^{-\Big(\dfrac{\pi^2
 
 FTCS (ang. Forward Time Central Space) czyli schemat "w przód":
 
-$$\dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2}$$
+$$\dfrac{\partial \psi}{\partial t} = D\dfrac{\partial^2 \psi}{\partial x^2}$$
 
 Dla lewej strony równania zastosujemy schemat "w przód", natomiast dla prawej schemat centralny.
 
@@ -142,7 +142,7 @@ $$\dfrac{D\Delta t}{\Delta x^2} = \dfrac{6}{10}$$
 \subsection{Schemat BTCS}
 BTCS (ang. Backward Time Central Space) czyli schemat "w tył":
 
-$$\dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2}$$
+$$\dfrac{\partial \psi}{\partial t} = D\dfrac{\partial^2 \psi}{\partial x^2}$$
 
 Dla lewej strony równania zastosujemy schemat "w tył", natomiast dla prawej schemat centralny.
 
@@ -197,7 +197,7 @@ Czas wykonywania algorytmu $ = 0.254 s$
 
 \subsection{Schemat Cranka-Nicolson}
 
-$$\dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2}$$
+$$\dfrac{\partial \psi}{\partial t} = D\dfrac{\partial^2 \psi}{\partial x^2}$$
 
 Dla lewej strony równania zastosujemy schemat centralny na poziomie (n+$\frac{1}{2}$), natomiast dla prawej weźmiemy średnią argumentów schematów centralnych na poziomach n i n+1.
 
@@ -251,7 +251,7 @@ Czas wykonywania algorytmu $ = 0.112 s$
 \subsection{Schemat DuForta-Frankle}
 Schemat DuForta-Frankle dla równań dyfuzyjnych postaci:
 
-$$\dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2}$$
+$$\dfrac{\partial \psi}{\partial t} = D\dfrac{\partial^2 \psi}{\partial x^2}$$
 
 Dla obu stron powyższego równania stosuje się schemat centralny.
 
@@ -375,7 +375,7 @@ Czas wykonywania algorytmu $ = 0.098 s$
 
 Niejawna metoda trójpoziomowa, charakteryzująca się znakomitą dokładnością.
 
-$$\dfrac{\delta \psi}{\delta t} = D\dfrac{\delta^2 \psi}{\delta x^2}$$
+$$\dfrac{\partial \psi}{\partial t} = D\dfrac{\partial^2 \psi}{\partial x^2}$$
 
 , mamy:
 
